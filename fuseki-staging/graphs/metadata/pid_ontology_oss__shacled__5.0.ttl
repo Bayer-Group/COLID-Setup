@@ -25,7 +25,7 @@
 <https://pid.bayer.com/kos/19050/UsageAndMaintenance>
         rdfs:label  "Usage and Maintenance"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "6"^^xsd:decimal ;
+        sh:order    "60"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for Usage and Maintenance"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for Usage and Maintenance"@en .
 
@@ -75,14 +75,14 @@ owl:Thing  rdf:type  sh:NodeShape .
 <https://pid.bayer.com/kos/19050/PIDURI>
         rdfs:label  "PIDURI"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "4"^^xsd:decimal ;
+        sh:order    "40"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Information about the PID URI"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Information about the PID URI"@en .
 
 <https://pid.bayer.com/kos/19050/Quality>
         rdfs:label  "Quality"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "8"^^xsd:decimal ;
+        sh:order    "80"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information about Quality"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information about Quality"@en .
 
@@ -98,7 +98,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 
 <http://pid.bayer.com/kos/19014/NetworkedResource-hasDistributionEndpointLifecycleStatus>
         rdf:type     sh:PropertyShape ;
-        sh:order     "3"^^xsd:decimal ;
+        sh:order     "30"^^xsd:decimal ;
         sh:minCount  1 ;
         sh:name      "Distribution Endpoint Lifecycle Status" ;
         sh:path      <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus> ;
@@ -138,7 +138,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <https://pid.bayer.com/kos/19050/Source>
         rdfs:label  "Source"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "7"^^xsd:decimal ;
+        sh:order    "70"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for Source"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for Source"@en .
 
@@ -154,7 +154,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <http://pid.bayer.com/kos/19050/LinkTypes>
         rdfs:label  "Linked Resources" ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "9"^^xsd:decimal ;
+        sh:order    "90"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all link types" ;
         <http://topbraid.org/tosh#editGroupDescription>  "A group for all link types between resources"@en .
 
@@ -174,7 +174,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 
 <http://pid.bayer.com/kos/19014/NetworkedResource-hasContactPerson>
         rdf:type     sh:PropertyShape ;
-        sh:order     "2"^^xsd:decimal ;
+        sh:order     "20"^^xsd:decimal ;
         sh:minCount  0 ;
         sh:name      "Contact Person" ;
         sh:path      <https://pid.bayer.com/kos/19050/hasContactPerson> ;
@@ -184,7 +184,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 
 <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkedResourceLabel>
         rdf:type     sh:PropertyShape ;
-        sh:order     "1"^^xsd:decimal ;
+        sh:order     "10"^^xsd:decimal ;
         sh:minCount  1 ;
         sh:name      "Label"@en ;
         sh:path      <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel> ;
@@ -195,7 +195,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkAddress>
         rdfs:label   "has network hostname" ;
         rdf:type     sh:PropertyShape ;
-        sh:order     "4"^^xsd:decimal ;
+        sh:order     "40"^^xsd:decimal ;
         sh:minCount  1 ;
         sh:name      "Target URI" ;
         sh:path      <http://pid.bayer.com/kos/19014/hasNetworkAddress> ;
@@ -270,7 +270,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <https://pid.bayer.com/kos/19050/SecurityAccess>
         rdfs:label  "Security and Access"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "7"^^xsd:decimal ;
+        sh:order    "70"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for security and Access"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for security and Access"@en .
 
@@ -355,7 +355,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <http://pid.bayer.com/kos/19050/DistributionEndpoints>
         rdfs:label  "Distribution Endpoints"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "10"^^xsd:decimal ;
+        sh:order    "100"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all information for distribution endpoints" ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all information for distribution endpoints" .
 
@@ -396,7 +396,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <https://pid.bayer.com/kos/19050/Definition>
         rdfs:label  "Definition"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "2"^^xsd:decimal ;
+        sh:order    "20"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Objects for Definition" ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Objects for Definition" .
 
@@ -444,7 +444,7 @@ owl:Thing  rdf:type  sh:NodeShape .
 <https://pid.bayer.com/kos/19050/PreferedLabel>
         rdfs:label  "Preferred Label"@en ;
         rdf:type    sh:PropertyGroup ;
-        sh:order    "1"^^xsd:decimal ;
+        sh:order    "10"^^xsd:decimal ;
         <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all preferred Information"@en ;
         <http://topbraid.org/tosh#editGroupDescription>  "Grouping all preferred Information"@en .
 
