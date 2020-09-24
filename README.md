@@ -31,7 +31,6 @@ This repository helps settings up a local environment based on Docker Compose.
     RELATIONAL_DATABASE_PASSWORD=dbpass
     SMTP_USERNAME=any
     SMTP_PASSWORD=any
-    ACCESS_TOKEN=<secret value> (obsolete with update of search service to .NET Core 3.1 and Elastic 7)
     ```
 5. Run `docker-compose up` to download and build all Docker images and startup the environment
 6. Load the given Turtle files (*.ttl) to the Apache Jena Fuseki database via its webinterface (see table at the end of this document)
