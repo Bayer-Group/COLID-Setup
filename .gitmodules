@@ -1,32 +1,24 @@
-[submodule "colid-appdata-service"]
-	path = colid-appdata-service
+[submodule "COLID-AppData-Service"]
+	path = COLID-AppData-Service
 	url = https://github.com/Bayer-Group/COLID-AppData-Service.git
-	branch = master
-[submodule "colid-data-marketplace-frontend"]
-	path = colid-data-marketplace-frontend
+[submodule "COLID-Data-Marketplace-Frontend"]
+	path = COLID-Data-Marketplace-Frontend
 	url = https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend.git
-	branch = master
-[submodule "colid-editor-frontend"]
-	path = colid-editor-frontend
+[submodule "COLID-Editor-Frontend"]
+	path = COLID-Editor-Frontend
 	url = https://github.com/Bayer-Group/COLID-Editor-Frontend.git
-	branch = master
-[submodule "colid-indexing-crawler-service"]
-	path = colid-indexing-crawler-service
+[submodule "COLID-Indexing-Crawler-Service"]
+	path = COLID-Indexing-Crawler-Service
 	url = https://github.com/Bayer-Group/COLID-Indexing-Crawler-Service.git
-	branch = master
-[submodule "colid-registration-service"]
-	path = colid-registration-service
+[submodule "COLID-Registration-Service"]
+	path = COLID-Registration-Service
 	url = https://github.com/Bayer-Group/COLID-Registration-Service.git
-	branch = master
-[submodule "colid-reporting-service"]
-	path = colid-reporting-service
+[submodule "COLID-Reporting-Service"]
+	path = COLID-Reporting-Service
 	url = https://github.com/Bayer-Group/COLID-Reporting-Service.git
-	branch = master
-[submodule "colid-scheduler-service"]
-	path = colid-scheduler-service
+[submodule "COLID-Scheduler-Service"]
+	path = COLID-Scheduler-Service
 	url = https://github.com/Bayer-Group/COLID-Scheduler-Service.git
-	branch = master
-[submodule "colid-search-service"]
-	path = colid-search-service
+[submodule "COLID-Search-Service"]
+	path = COLID-Search-Service
 	url = https://github.com/Bayer-Group/COLID-Search-Service.git
-	branch = master
