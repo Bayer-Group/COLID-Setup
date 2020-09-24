@@ -43,7 +43,7 @@ This repository helps settings up a local environment based on Docker Compose.
     ```
 - After starting the application a second time, the fuseki database could throw exceptions. Delete the Docker container of the fuseki database with `docker container rm fuseki`. ATTENTION: This will remove all your created data and reload the database with the initial data.
 
-- fuseki-loader/loader.sh could contain `Carriage Return` characters, remove them, since the
+- fuseki-loader/loader.sh could contain `Carriage Return` characters, remove them.
 
 ## Application URLs
 
