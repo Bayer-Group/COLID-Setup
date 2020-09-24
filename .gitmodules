@@ -1,0 +1,32 @@
+[submodule "colid-appdata-service"]
+	path = colid-appdata-service
+	url = https://github.com/Bayer-Group/COLID-AppData-Service.git
+	branch = master
+[submodule "colid-data-marketplace-frontend"]
+	path = colid-data-marketplace-frontend
+	url = https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend.git
+	branch = master
+[submodule "colid-editor-frontend"]
+	path = colid-editor-frontend
+	url = https://github.com/Bayer-Group/COLID-Editor-Frontend.git
+	branch = master
+[submodule "colid-indexing-crawler-service"]
+	path = colid-indexing-crawler-service
+	url = https://github.com/Bayer-Group/COLID-Indexing-Crawler-Service.git
+	branch = master
+[submodule "colid-registration-service"]
+	path = colid-registration-service
+	url = https://github.com/Bayer-Group/COLID-Registration-Service.git
+	branch = master
+[submodule "colid-reporting-service"]
+	path = colid-reporting-service
+	url = https://github.com/Bayer-Group/COLID-Reporting-Service.git
+	branch = master
+[submodule "colid-scheduler-service"]
+	path = colid-scheduler-service
+	url = https://github.com/Bayer-Group/COLID-Scheduler-Service.git
+	branch = master
+[submodule "colid-search-service"]
+	path = colid-search-service
+	url = https://github.com/Bayer-Group/COLID-Search-Service.git
+	branch = master

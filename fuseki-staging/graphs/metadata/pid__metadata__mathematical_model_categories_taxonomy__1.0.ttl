@@ -1,0 +1,88 @@
+# baseURI: urn:x-evn-master:dev__mathematical_model_categories_taxonomy
+# imports: http://topbraid.org/imported
+# imports: http://topbraid.org/skos.shapes
+# imports: https://pid.bayer.com/kos/19050/
+
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix teamwork: <http://topbraid.org/teamwork#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dev__mathematical_model_categories_taxonomy: <https://pid.bayer.com/2fdbd958-b0c3-4a4d-96a9-41641964140d/> .
+
+<urn:x-evn-master:dev__mathematical_model_categories_taxonomy>
+        a                      owl:Ontology ;
+        rdfs:comment           "Taxonomy to present the controlled vocabulary for the category field when registering mathematical models in PID." ;
+        rdfs:label             "[DEV] Mathematical Model Categories Taxonomy" ;
+        metadata:identifier    "https://pid.bayer.com/49b305df-c729-4331-829f-cd6d12d2e790/" ;
+        metadata:officialName  "Mathematical Model Categories Taxonomy" ;
+        metadata:status        metadata:UnderDevelopmentStatus ;
+        metadata:version       "1" ;
+        <http://topbraid.org/swa#defaultNamespace>
+                "https://pid.bayer.com/2fdbd958-b0c3-4a4d-96a9-41641964140d/" ;
+        teamwork:newInstancesUserCannotModifyURI
+                false ;
+        owl:imports            <http://topbraid.org/imported> , <http://topbraid.org/skos.shapes> , <https://pid.bayer.com/kos/19050/> .
+
+dev__mathematical_model_categories_taxonomy:Mathematical_Model_Category
+        a           <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+        rdfs:label  "Mathematical Model Category"@en ;
+        <http://www.w3.org/2004/02/skos/core#hasTopConcept>
+                dev__mathematical_model_categories_taxonomy:0 , dev__mathematical_model_categories_taxonomy:1 , dev__mathematical_model_categories_taxonomy:2 , dev__mathematical_model_categories_taxonomy:3 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Mathematical Model Category"@en .
+
+dev__mathematical_model_categories_taxonomy:0
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Classification Model"@en .
+
+dev__mathematical_model_categories_taxonomy:1
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Regression Model"@en .
+
+dev__mathematical_model_categories_taxonomy:2
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                " Time Series Model"@en .
+
+dev__mathematical_model_categories_taxonomy:3
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Clustering Model"@en .
+
+dev__mathematical_model_categories_taxonomy:4
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#broader>
+                dev__mathematical_model_categories_taxonomy:8 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Convolutional Networks"@en .
+
+dev__mathematical_model_categories_taxonomy:5
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#broader>
+                dev__mathematical_model_categories_taxonomy:8 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Neural Networks"@en .
+
+dev__mathematical_model_categories_taxonomy:6
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#broader>
+                dev__mathematical_model_categories_taxonomy:8 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "LTSM Networks"@en .
+
+dev__mathematical_model_categories_taxonomy:7
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#broader>
+                dev__mathematical_model_categories_taxonomy:8 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Generative Adversarial Networks"@en .
+
+dev__mathematical_model_categories_taxonomy:8
+        a       <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+        <http://www.w3.org/2004/02/skos/core#broader>
+                dev__mathematical_model_categories_taxonomy:0 ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel>
+                "Deep Learning Model"@en .

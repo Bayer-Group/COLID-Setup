@@ -1,0 +1,29 @@
+<https://pid.bayer.com/kos/19050#48df94fc-a2cc-4e64-8664-83cc4d727ab6>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Web" .
+
+<https://pid.bayer.com/kos/19050#ea2e6672-13dc-4698-b2b5-780638a47f86>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Example" .
+
+<https://pid.bayer.com/kos/19050#c71c8eb8-5c90-43d0-8563-fedf0b89e8fd>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Marketing" .
+                
+<https://pid.bayer.com/kos/19050#1fb6ee26-d3d4-4661-b4ab-c1553234ac5f>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Research" .
+
+<https://pid.bayer.com/kos/19050#b403714e-ec46-44c4-a505-8d3b761c5a44>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Paper" .
+
+<https://pid.bayer.com/kos/19050#f4dbcc62-5f18-4711-a684-abdb96b9e9ff>
+        a       <https://pid.bayer.com/kos/19050/Keyword> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Data" .

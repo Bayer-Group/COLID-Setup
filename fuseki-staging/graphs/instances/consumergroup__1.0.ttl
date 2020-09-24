@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://pid.bayer.com/kos/19050#bf2f8eeb-fdb9-4ee1-ad88-e8932fa8753c> a <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+	rdfs:label "Data Services" ;
+	<https://pid.bayer.com/kos/19050#hasAdRole> "COLID.Group01Data.ReadWrite" ;
+	<https://pid.bayer.com/kos/19050#hasPidUriTemplate> <https://pid.bayer.com/kos/19050#13cd004a-a410-4af5-a8fc-eecf9436b58b> , <https://pid.bayer.com/kos/19050#5a9bc613-f948-4dd3-8cd7-9a4465319d24>  ;
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> "consumergroup.admin@bayer.com";
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus>	<https://pid.bayer.com/kos/19050/active> .
+
+<https://pid.bayer.com/kos/19050#2b3f0380-dd22-4666-a28b-7f1eeb82a5ff> a <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+	rdfs:label "Research & Development" ;
+	<https://pid.bayer.com/kos/19050#hasAdRole> "COLID.Group02Data.ReadWrite" ;
+	<https://pid.bayer.com/kos/19050#hasPidUriTemplate> <https://pid.bayer.com/kos/19050#641bd936-e413-41db-a0b4-5691d2a78925>  ;
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> "consumergroup.admin@bayer.com";
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus>	<https://pid.bayer.com/kos/19050/active> .
+
+<https://pid.bayer.com/kos/19050#82fc2870-ca4e-407f-a197-bf3766ad785f> a <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+	rdfs:label "Procurement" ;
+	<https://pid.bayer.com/kos/19050#hasAdRole> "COLID.Group03Data.ReadWrite" ;
+	<https://pid.bayer.com/kos/19050#hasPidUriTemplate> <https://pid.bayer.com/kos/19050#cb849b80-6d00-4c3a-8810-6e4f91ee0cd1> ;
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> "consumergroup.admin@bayer.com";
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus>	<https://pid.bayer.com/kos/19050/active> .
+
+<https://pid.bayer.com/kos/19050#3bb018e4-b006-4c9d-a85c-cd409fec89e5> a <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+	rdfs:label "Marketing & Sales" ;
+	<https://pid.bayer.com/kos/19050#hasAdRole> "COLID.Group04Data.ReadWrite" ;
+	<https://pid.bayer.com/kos/19050#hasPidUriTemplate> <https://pid.bayer.com/kos/19050#8ea6ea1b-ffa5-47bc-8196-f07968f71c93> , <https://pid.bayer.com/kos/19050#f4f2e7c1-43eb-465c-bb15-5910923d3198>  ;
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> "consumergroup.admin@bayer.com";
+	<https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus>	<https://pid.bayer.com/kos/19050/active> .

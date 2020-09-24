@@ -1,0 +1,844 @@
+# baseURI: https://pid.bayer.com/kos/19050/shacl/
+# imports: http://datashapes.org/dash
+# imports: http://pid.bayer.com/kos/19014/
+
+@prefix metadata:  <http://topbraid.org/metadata#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix teamwork:  <http://topbraid.org/teamwork#> .
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasPIDEditorialNote>
+        rdfs:label   "Editorial Note" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Editorial Note" ;
+        sh:group     <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasPIDEditorialNote> ;
+        sh:datatype  rdf:HTML ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/UsageAndMaintenance>
+        rdfs:label  "Usage and Maintenance"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "6"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for Usage and Maintenance"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for Usage and Maintenance"@en .
+
+<https://pid.bayer.com/kos/19050/hasPIDEditorialNote>
+        rdfs:subPropertyOf  <http://pid.bayer.com/kos/19014/editorialNote> .
+
+<https://pid.bayer.com/kos/19050/editorialNote>
+        rdf:type      sh:PropertyShape ;
+        sh:order      "2"^^xsd:decimal ;
+        sh:minCount   0 ;
+        sh:name       "Editorial Note"@en ;
+        sh:group      <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path       <http://pid.bayer.com/kos/19014/editorialNote> ;
+        sh:datatype   rdf:HTML ;
+        sh:maxCount   1 ;
+        sh:nodeKind   sh:Literal ;
+        sh:maxLength  1000 .
+
+owl:Thing  rdf:type  sh:NodeShape .
+
+<http://pid.bayer.com/kos/19014/Dataset>
+        rdf:type  sh:NodeShape .
+
+<https://pid.bayer.com/kos/19050/367403--5>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "7"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Resource Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/852147> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/Keyword>
+        sh:property  <https://pid.bayer.com/kos/19050/Keyword-label> .
+
+<https://pid.bayer.com/kos/19050/Keyword-label>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Label" ;
+        sh:group     <https://pid.bayer.com/kos/19050/PreferedLabel> ;
+        sh:path      rdfs:label ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/PIDURI>
+        rdfs:label  "PIDURI"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "4"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Information about the PID URI"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Information about the PID URI"@en .
+
+<https://pid.bayer.com/kos/19050/Quality>
+        rdfs:label  "Quality"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "8"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information about Quality"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information about Quality"@en .
+
+<https://pid.bayer.com/kos/19050/RDFDataset-hasBaseURI>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Base Uri" ;
+        sh:group     <https://pid.bayer.com/kos/19050/PIDURI> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasBaseURI> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasDistributionEndpointLifecycleStatus>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "3"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Distribution Endpoint Lifecycle Status" ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/MathematicalModel-hasMathematicalModelCategory>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "3"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Mathematical Model Category"@en ;
+        sh:group        <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path         <https://pid.bayer.com/kos/19050/hasMathematicalModelCategory> ;
+        sh:maxCount     7 ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "Select category terms that apply to the registered mathematical model."@en .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-lastChangeDateTime>
+        rdfs:label   "Last change date and time" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "60"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Last Change Date and Time" ;
+        sh:group     <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/lastChangeDateTime> ;
+        sh:datatype  xsd:dateTime ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/TechnicalInformation>
+        rdfs:label  "Technical Information"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "997"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all not editable technical Information"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all not editable technical Information"@en .
+
+<https://pid.bayer.com/kos/19050/Source>
+        rdfs:label  "Source"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "7"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for Source"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for Source"@en .
+
+<http://pid.bayer.com/kos/19014/Ontology-isSchemaOfDataset>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "2"^^xsd:decimal ;
+        sh:name         "Is Schema Of Dataset" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/isSchemaOfDataset> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links an ontology to the dataset which populates the ontology. E.g. the PID application ontology is the schema of the dataset of the PID application, which is stored in the triplestore of the PID application backend." .
+
+<http://pid.bayer.com/kos/19050/LinkTypes>
+        rdfs:label  "Linked Resources" ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "9"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all link types" ;
+        <http://topbraid.org/tosh#editGroupDescription>  "A group for all link types between resources"@en .
+
+<http://pid.bayer.com/kos/19014/Dataset-isSubsetOfDataset>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Is Subset Of Dataset" ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/isSubsetOfDataset> ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19014/NetworkedResource>
+        rdf:type     sh:NodeShape ;
+        sh:property  <http://pid.bayer.com/kos/19014/NetworkedResource-hasDistributionEndpointLifecycleStatus> ;
+        sh:property  <http://pid.bayer.com/kos/19014/NetworkedResource-hasContactPerson> ;
+        sh:property  <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkedResourceLabel> ;
+        sh:property  <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkAddress> .
+
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasContactPerson>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Contact Person" ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasContactPerson> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal ;
+        sh:class     <http://pid.bayer.com/kos/19014/Person> .
+
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkedResourceLabel>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Label"@en ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel> ;
+        sh:datatype  rdf:HTML ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkAddress>
+        rdfs:label   "has network hostname" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "4"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Target URI" ;
+        sh:path      <http://pid.bayer.com/kos/19014/hasNetworkAddress> ;
+        sh:datatype  xsd:anyURI ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLaterVersion>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "8"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Later Version" ;
+        sh:group     <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasLaterVersion> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation>
+        rdfs:label  "Invisible Technical Information" ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "998"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all not editable and invisible technical Information " ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all not editable and invisible technical Information " .
+
+<http://pid.bayer.com/kos/19014/Ontology-includesOntology>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Includes Ontology" ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/includesOntology> ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/GenericDataset-isSubsetOfDataset>
+        rdf:type        sh:PropertyShape ;
+        sh:name         "Is Subset Of Dataset" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/isSubsetOfDataset> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links a dataset to another dataset from which this one was extracted from." .
+
+<https://pid.bayer.com/kos/19050/367403--4>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "6"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "PID URI Templates graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/891201> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/MappingOntology>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/MappingOntology-mapsDataset> .
+
+<https://pid.bayer.com/kos/19050/MappingOntology-mapsDataset>
+        rdfs:label  "Maps Dataset"@en ;
+        rdf:type    sh:PropertyShape ;
+        sh:order    "3"^^xsd:decimal ;
+        sh:name     "Maps Dataset"@en ;
+        sh:group    <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path     <https://pid.bayer.com/kos/19050/mapsDataset> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasInformationClassification>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "4"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Information Classification"@en ;
+        sh:group     <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasInformationClassification> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI ;
+        sh:class     <https://pid.bayer.com/kos/19050/InformationClassification> .
+
+<https://pid.bayer.com/kos/19050/SecurityAccess>
+        rdfs:label  "Security and Access"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "7"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Information for security and Access"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Information for security and Access"@en .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLifecycleStatus>
+        rdfs:label   "Lifecycle Status" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "5"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Lifecycle Status" ;
+        sh:group     <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasLifecycleStatus> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI ;
+        sh:class     <https://pid.bayer.com/kos/19050/LifeCycleStatus> .
+
+<https://pid.bayer.com/kos/19050/NonRDFDataset>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/GenericDataset-isSubsetOfDataset> ;
+        sh:property  <https://pid.bayer.com/kos/19050/GenericDataset-isCopyOfDataset> ;
+        sh:property  <https://pid.bayer.com/kos/19050/GenericDataset-isDerivedFromDataset> ;
+        sh:property  <https://pid.bayer.com/kos/19050/GenericDataset-sameDatasetAs> ;
+        sh:property  <https://pid.bayer.com/kos/19050/NonRDFDataset-containsLicensedData> ;
+        sh:property  <https://pid.bayer.com/kos/19050/NonRDFDataset-isPersonalData> .
+
+<https://pid.bayer.com/kos/19050/GenericDataset-isCopyOfDataset>
+        rdf:type        sh:PropertyShape ;
+        sh:name         "Is Copy Of Dataset" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/isCopyOfDataset> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links a copy of a dataset with the original dataset. Copy in this context means a complete and identiical replication. This property is an asymmetric property, which means that is must point from the copy to the original." .
+
+<https://pid.bayer.com/kos/19050/GenericDataset-isDerivedFromDataset>
+        rdf:type        sh:PropertyShape ;
+        sh:name         "Is Derived From Dataset" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/isDerivedFromDataset> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links a dataset to the original dataset from which this one was derived, e.g. views. In contrast to the properties \"is subset of\" and \"is copy of\" the content of this dataset may have been somehow modified." .
+
+<https://pid.bayer.com/kos/19050/GenericDataset-sameDatasetAs>
+        rdf:type        sh:PropertyShape ;
+        sh:name         "Same Dataset As" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/sameDatasetAs> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links two datasets with identical content." .
+
+<https://pid.bayer.com/kos/19050/NonRDFDataset-containsLicensedData>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Licensed Data" ;
+        sh:group     <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+        sh:path      <https://pid.bayer.com/kos/19050/containsLicensedData> ;
+        sh:datatype  xsd:boolean ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/NonRDFDataset-isPersonalData>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "2"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Personal Data" ;
+        sh:group        <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+        sh:path         <https://pid.bayer.com/kos/19050/isPersonalData> ;
+        sh:datatype     xsd:boolean ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "Please specify if this dataset contains personal data in the sense of GDPR or similar." .
+
+<https://pid.bayer.com/kos/19050/RDFDataset-mainDistribution>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Main Distribution Endpoint" ;
+        sh:group     <http://pid.bayer.com/kos/19050/DistributionEndpoints> ;
+        sh:path      <https://pid.bayer.com/kos/19050/mainDistribution> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19050/DistributionEndpoints>
+        rdfs:label  "Distribution Endpoints"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "10"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all information for distribution endpoints" ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all information for distribution endpoints" .
+
+<https://pid.bayer.com/kos/19050/Mapping-appliedToDataset>
+        rdf:type  sh:PropertyShape ;
+        sh:path  <https://pid.bayer.com/kos/19050/appliedToDataset> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-dateCreated>
+        rdfs:label      "Date Created" ;
+        rdf:type        sh:PropertyShape ;
+        sh:order        "70"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Date Created" ;
+        sh:group        <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path         <https://pid.bayer.com/kos/19050/dateCreated> ;
+        sh:datatype     xsd:dateTime ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "Creation date/time." .
+
+<https://pid.bayer.com/kos/19050/dateCreated>
+        rdfs:comment  "<small class=\"form-text text-muted\">Creation date/time.</small>" .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasResourceDefinition>
+        rdfs:label      "Definition"@en ;
+        rdf:type        sh:PropertyShape ;
+        sh:order        "1"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Definition"@de ;
+        sh:name         "Definition"@en ;
+        sh:group        <https://pid.bayer.com/kos/19050/Definition> ;
+        sh:path         <https://pid.bayer.com/kos/19050/hasResourceDefinition> ;
+        sh:datatype     rdf:HTML ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "A proper definition of the registered resource assures resource consumers get a proper understanding of what the resource stands for. It contributes to a rich search experience and it facilitates data integrity services. " .
+
+<https://pid.bayer.com/kos/19050/Definition>
+        rdfs:label  "Definition"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "2"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all Objects for Definition" ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all Objects for Definition" .
+
+<https://pid.bayer.com/kos/19050/Mapping->
+        rdf:type        sh:PropertyShape ;
+        sh:order        "1"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Has Source Resource" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/788854> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links the mapping resource to the resource which is the source of the mapping." .
+
+<http://pid.bayer.com/kos/19014/Dataset-isPersonalData>
+        rdfs:label   "is personal data" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Personal Data"@en ;
+        sh:group     <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+        sh:path      <https://pid.bayer.com/kos/19050/isPersonalData> ;
+        sh:datatype  xsd:boolean ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<http://pid.bayer.com/kos/19014/Dataset-isCopyOfDataset>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Is Copy Of Dataset" ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/isCopyOfDataset> ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLabel>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "1"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Label"@en ;
+        sh:group        <https://pid.bayer.com/kos/19050/PreferedLabel> ;
+        sh:path         <https://pid.bayer.com/kos/19050/hasLabel> ;
+        sh:datatype     xsd:string ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "This is the label for this registered resource." .
+
+<https://pid.bayer.com/kos/19050/PreferedLabel>
+        rdfs:label  "Preferred Label"@en ;
+        rdf:type    sh:PropertyGroup ;
+        sh:order    "1"^^xsd:decimal ;
+        <http://topbraid.org/tosh#viewGroupDescription>  "Grouping all preferred Information"@en ;
+        <http://topbraid.org/tosh#editGroupDescription>  "Grouping all preferred Information"@en .
+
+<https://pid.bayer.com/kos/19050/MathematicalModel-appliedToDataset>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Applied to Dataset"@en ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/appliedToDataset> ;
+        sh:nodeKind  sh:IRI .
+
+_:b0    rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Entry Lifecycle Status" ;
+        sh:group     <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403--3>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "5"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Metadata Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/875123> ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/MathematicalModel>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/MathematicalModel-hasMathematicalModelCategory> ;
+        sh:property  <https://pid.bayer.com/kos/19050/MathematicalModel-appliedToDataset> ;
+        sh:property  <https://pid.bayer.com/kos/19050/MathematicalModel-createdFromDataset> .
+
+<https://pid.bayer.com/kos/19050/MathematicalModel-createdFromDataset>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Created From Dataset"@en ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/createdFromDataset> ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19014/Dataset-isDerivedFromDataset>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Is Derived From Dataset" ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/isDerivedFromDataset> ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403-startTime>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Start date/time" ;
+        sh:group     <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path      <http://pid.bayer.com/kos/19014/startTime> ;
+        sh:datatype  xsd:dateTime ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/Mapping>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/Mapping-> ;
+        sh:property  <https://pid.bayer.com/kos/19050/Mapping--0> .
+
+<https://pid.bayer.com/kos/19050/Mapping--0>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "2"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Has Target Resource" ;
+        sh:group        <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path         <https://pid.bayer.com/kos/19050/885555> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property links the mapping resource to the resource which is the target of the mapping." .
+
+<http://pid.bayer.com/kos/19014/Resource-hasPID>
+        rdfs:label   "PID URI" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "PID URI" ;
+        sh:group     <https://pid.bayer.com/kos/19050/PIDURI> ;
+        sh:path      <http://pid.bayer.com/kos/19014/hasPID> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19014/Dataset-containsLicensedData>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Licensed Data" ;
+        sh:group     <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+        sh:path      <https://pid.bayer.com/kos/19050/containsLicensedData> ;
+        sh:datatype  xsd:boolean ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/367403>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--5> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--4> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--3> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403-startTime> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403-> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403-editorialNote> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--2> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--0> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--1> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--7> ;
+        sh:property  <https://pid.bayer.com/kos/19050/367403--6> .
+
+<https://pid.bayer.com/kos/19050/367403->
+        rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Consumer Group Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/846513> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403-editorialNote>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "0"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Editorial Note" ;
+        sh:path      <http://pid.bayer.com/kos/19014/editorialNote> ;
+        sh:datatype  rdf:HTML ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal .
+
+<https://pid.bayer.com/kos/19050/367403--2>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "4"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Keyword Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/895123> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403--0>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "2"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Enterprise Core Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/813245> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403--1>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "3"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Extended URI Template Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/841236> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403--7>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "8"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Resource History Graph" ;
+        sh:path      <https://pid.bayer.com/kos/19050/844122> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/367403--6>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "9"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "SHACL Constraints Graphs" ;
+        sh:path      <https://pid.bayer.com/kos/19050/852910> ;
+        sh:nodeKind  sh:IRI .
+
+<http://pid.bayer.com/kos/19014/hasCompetencyQuestion>
+        rdfs:comment  "Competency question(s) that the ontology should be able to answer." .
+
+<http://pid.bayer.com/kos/19014/PermanentIdentifier>
+        rdf:type     sh:NodeShape ;
+        sh:property  <http://pid.bayer.com/kos/19014/PermanentIdentifier-hasURITemplate> .
+
+<http://pid.bayer.com/kos/19014/PermanentIdentifier-hasURITemplate>
+        rdf:type     sh:PropertyShape ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasURITemplate> ;
+        sh:maxCount  1 .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-lastChangeUser>
+        rdfs:label      "Last Change User" ;
+        rdf:type        sh:PropertyShape ;
+        sh:order        "20"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Last Change User" ;
+        sh:group        <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path         <https://pid.bayer.com/kos/19050/lastChangeUser> ;
+        sh:datatype     xsd:string ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "This is the relation to the user who made the last change to the PID entry (e.g. identified by the email address)." ;
+        sh:pattern      "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" .
+
+rdfs:Resource  rdf:type  sh:NodeShape .
+
+<http://pid.bayer.com/kos/19014/Dataset-sameDatasetAs>
+        rdf:type     sh:PropertyShape ;
+        sh:name      "Same Dataset As" ;
+        sh:group     <http://pid.bayer.com/kos/19050/LinkTypes> ;
+        sh:path      <https://pid.bayer.com/kos/19050/sameDatasetAs> ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/RDFDataset>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/RDFDataset-hasBaseURI> ;
+        sh:property  <https://pid.bayer.com/kos/19050/RDFDataset-mainDistribution> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept>
+        rdf:type     sh:NodeShape ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasPIDEditorialNote> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-lastChangeDateTime> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasLaterVersion> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasInformationClassification> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasLifecycleStatus> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-dateCreated> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasResourceDefinition> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasLabel> ;
+        sh:property  _:b0 ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-lastChangeUser> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasDataSteward> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-author> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept--0> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasVersion> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-hasHistoricVersion> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept-distribution> ;
+        sh:property  <https://pid.bayer.com/kos/19050/PID_Concept--1> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasDataSteward>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "1"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Data Steward" ;
+        sh:group     <https://pid.bayer.com/kos/19050/Quality> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasDataSteward> ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  100 ;
+        sh:nodeKind  sh:Literal ;
+        sh:pattern   "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-author>
+        rdfs:label      "Author" ;
+        rdf:type        sh:PropertyShape ;
+        sh:order        "40"^^xsd:decimal ;
+        sh:minCount     1 ;
+        sh:name         "Author" ;
+        sh:group        <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path         <https://pid.bayer.com/kos/19050/author> ;
+        sh:datatype     xsd:string ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:Literal ;
+        sh:description  "The person who registered the resource in PID (e.g. identified by the email address).\r\n" ;
+        sh:pattern      "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" ;
+        <https://pid.bayer.com/ns/shacl/fieldType>  <https://pid.bayer.com/ns/shacl/fieldType#string> .
+
+<https://pid.bayer.com/kos/19050/PID_Concept--0>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "0"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Metadata Release Config" ;
+        sh:group     <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/646465> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/PID_Concept->
+        rdf:type        sh:PropertyShape ;
+        sh:order        "1"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Keywords" ;
+        sh:group        <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path         <https://pid.bayer.com/kos/19050/47119343> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property is used to assign a list of keywords to a resource like free tagging fields." .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasVersion>
+        rdfs:label   "has version" ;
+        rdf:type     sh:PropertyShape ;
+        sh:order     "4"^^xsd:decimal ;
+        sh:minCount  1 ;
+        sh:name      "Version" ;
+        sh:group     <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasVersion> ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal ;
+        sh:pattern   "^(\\d+\\.)*\\d+$" .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-hasHistoricVersion>
+        rdf:type     sh:PropertyShape ;
+        sh:minCount  0 ;
+        sh:name      "Historic Version" ;
+        sh:group     <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/hasHistoricVersion> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/PID_Concept-distribution>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "1"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Distribution Endpoint" ;
+        sh:group        <http://pid.bayer.com/kos/19050/DistributionEndpoints> ;
+        sh:path         <https://pid.bayer.com/kos/19050/distribution> ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "This property was derived from dcat:distribution and it links a PID Resource with its different distribution endpoints." ;
+        sh:class        <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+        <http://topbraid.org/tosh#editWidget>  <http://topbraid.org/swa#NestedObjectEditor> .
+
+<http://pid.bayer.com/kos/19014/Resource>
+        rdf:type     sh:NodeShape ;
+        sh:property  <http://pid.bayer.com/kos/19014/Resource-hasPID> .
+
+<http://pid.bayer.com/kos/19014/Ontology-hasCompetencyQuestion>
+        rdf:type     sh:PropertyShape ;
+        sh:order     "3"^^xsd:decimal ;
+        sh:minCount  0 ;
+        sh:name      "Competency Questions"@en ;
+        sh:group     <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+        sh:path      <http://pid.bayer.com/kos/19014/hasCompetencyQuestion> ;
+        sh:datatype  rdf:HTML ;
+        sh:maxCount  100 ;
+        sh:nodeKind  sh:Literal .
+
+<http://pid.bayer.com/kos/19014/hasDataSteward>
+        rdfs:comment  "Name of the data steward (CWID) of the source." .
+
+<http://pid.bayer.com/kos/19014/Ontology>
+        rdf:type     sh:NodeShape ;
+        sh:property  <http://pid.bayer.com/kos/19014/Ontology-isSchemaOfDataset> ;
+        sh:property  <http://pid.bayer.com/kos/19014/Ontology-includesOntology> ;
+        sh:property  <http://pid.bayer.com/kos/19014/Ontology-hasCompetencyQuestion> .
+
+<https://pid.bayer.com/kos/19050/GenericDataset>
+        rdf:type  sh:NodeShape .
+
+<http://pid.bayer.com/kos/19014/Ontology-mainDistribution>
+        rdf:type  sh:PropertyShape ;
+        sh:path  <https://pid.bayer.com/kos/19050/mainDistribution> .
+
+<https://pid.bayer.com/kos/19050/646465-metadataGraphConfiguration>
+        rdf:type     sh:PropertyShape ;
+        sh:minCount  1 ;
+        sh:name      "Metadata Graph Configuration" ;
+        sh:group     <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+        sh:path      <https://pid.bayer.com/kos/19050/646465> ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:IRI .
+
+<https://pid.bayer.com/kos/19050/PID_Concept--1>
+        rdf:type        sh:PropertyShape ;
+        sh:order        "30"^^xsd:decimal ;
+        sh:minCount     0 ;
+        sh:name         "Change Requester" ;
+        sh:group        <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+        sh:path         <https://pid.bayer.com/kos/19050/546454> ;
+        sh:maxCount     1 ;
+        sh:nodeKind     sh:IRI ;
+        sh:description  "The person who requested the last change without editing the resource entry, e.g. setting a resource status to \"Mark for Deletion\"." .
+
+<https://pid.bayer.com/kos/19050/shacl/>
+        rdfs:comment        "This ontologies contains the shacl contraints for the PID Ontology" ;
+        owl:imports         <http://datashapes.org/dash> ;
+        rdf:type            owl:Ontology ;
+        metadata:status     metadata:UnderDevelopmentStatus ;
+        teamwork:rootClass  owl:Thing ;
+        metadata:version    "1" ;
+        rdfs:label          "PID Ontology SHACLed for COLID open source publication - DEV" ;
+        owl:imports         <http://pid.bayer.com/kos/19014/> ;
+        <http://topbraid.org/swa#defaultNamespace>  "http://pid.bayer.com/kos/19050/shacl/" ;
+        <http://www.bayerLF.com/schema/SCHEMA_ontology#bayerGraphURI>  "https://pid.bayer.com/kos/19050/shacl/" .
+
+<urn:x-evn-master:dev__pid_ontology_shacled_for_colid_open_source_publication>
+        rdfs:label                 "PID Ontology SHACLed for COLID open source publication - DEV" ;
+        metadata:status            metadata:UnderDevelopmentStatus ;
+        rdf:type                   <http://teamwork.topbraidlive.org/ontologyprojects#Ontology> ;
+        rdf:type                   teamwork:Vocabulary ;
+        rdf:type                   owl:Ontology ;
+        <http://www.bayerLF.com/schema/SCHEMA_ontology#bayerGraphURI>  "https://pid.bayer.com/kos/19050/shacl/" ;
+        teamwork:rootClass         owl:Thing ;
+        owl:imports                <http://datashapes.org/dash> ;
+        owl:imports                <http://topbraid.org/teamworkconstraints> ;
+        owl:imports                <urn:x-evn-master:dev__pid_ontology_for_colid_open_source_publication> ;
+        teamwork:externalGraphURI  <https://pid.bayer.com/kos/19050/shacl/> ;
+        <http://topbraid.org/swa#defaultNamespace>  "http://pid.bayer.com/kos/19050/shacl/" ;
+        rdfs:comment               "This ontologies contains the shacl contraints for the PID Ontology" ;
+        metadata:version           "1" .
+
+<http://teamwork.topbraidlive.org/ontologyprojects#Ontology>
+        rdfs:subClassOf  teamwork:Vocabulary .
+
+teamwork:Vocabulary  rdfs:subClassOf  owl:Ontology .

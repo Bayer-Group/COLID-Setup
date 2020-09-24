@@ -1,0 +1,113 @@
+<https://pid.bayer.com/kos/19050#0ddde14e-641d-4309-85bd-ff6e977cf99e>
+        a       <http://pid.bayer.com/kos/19014/BrowsableResource> ;
+        <http://pid.bayer.com/kos/19014/hasNetworkAddress>
+                "https://example.com/"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/pid/38b679fa-6e9a-4fcb-9c3d-115ad93f1450> ;
+        <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/active> ;
+        <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel>
+                "Example Page"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML> .
+
+<https://pid.bayer.com/kos/19050#59d1ebec-8c85-4ecb-82c9-f6b56cdf8c24>
+        a       <http://pid.bayer.com/kos/19014/BrowsableResource> ;
+        <http://pid.bayer.com/kos/19014/hasNetworkAddress>
+                "https://example.com/"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/pid/38b679fa-6e9a-4fcb-9c3d-115ad93f1450> ;
+        <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/active> ;
+        <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel>
+                "Example Page"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML> .
+
+<https://pid.bayer.com/kos/19050#f14e6eb0-29d7-4bef-8c7e-d7cd66f2c57a>
+        a       <https://pid.bayer.com/kos/19050/GenericDataset> ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/pid/67c89447-1d3b-4504-8bb6-d3eb46505c05> ;
+        <https://pid.bayer.com/kos/19050#hasConsumerGroup>
+                <https://pid.bayer.com/kos/19050#bf2f8eeb-fdb9-4ee1-ad88-e8932fa8753c> ;
+        <https://pid.bayer.com/kos/19050/47119343>
+                <https://pid.bayer.com/kos/19050#48df94fc-a2cc-4e64-8664-83cc4d727ab6> , <https://pid.bayer.com/kos/19050#ea2e6672-13dc-4698-b2b5-780638a47f86> ;
+        <https://pid.bayer.com/kos/19050/646465>
+                <https://pid.bayer.com/kos/19050#cf33a012-868e-44f9-8f8a-0cd9a716a340> ;
+        <https://pid.bayer.com/kos/19050/author>
+                "superadmin@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/containsLicensedData>
+                true ;
+        <https://pid.bayer.com/kos/19050/dateCreated>
+                "2020-02-20T11:24:29.1769558Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <https://pid.bayer.com/kos/19050/distribution>
+                <https://pid.bayer.com/kos/19050#59d1ebec-8c85-4ecb-82c9-f6b56cdf8c24> ;
+        <https://pid.bayer.com/kos/19050/hasDataSteward>
+                "anotheruser@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/draft> ;
+        <https://pid.bayer.com/kos/19050/hasInformationClassification>
+                <https://pid.bayer.com/kos/19050/Internal> ;
+        <https://pid.bayer.com/kos/19050/hasLabel>
+                "Generic Example Dataset" ;
+        <https://pid.bayer.com/kos/19050/hasLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/underDevelopment> ;
+        <https://pid.bayer.com/kos/19050/hasPIDEditorialNote>
+                "This test illustrates the idea of a draft."^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML> ;
+        <https://pid.bayer.com/kos/19050/hasResourceDefinition>
+                "This is a generic example dataset to show the basic functionality of COLID. Entries can be created as drafts before publication, like this one."^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML> ;
+        <https://pid.bayer.com/kos/19050/hasVersion>
+                "1" ;
+        <https://pid.bayer.com/kos/19050/isPersonalData>
+                false ;
+        <https://pid.bayer.com/kos/19050/lastChangeDateTime>
+                "2020-02-20T11:29:42.4213166Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <https://pid.bayer.com/kos/19050/lastChangeUser>
+                "superadmin@bayer.com" .
+
+<https://pid.bayer.com/pid/67c89447-1d3b-4504-8bb6-d3eb46505c05>
+        a       <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+        <https://pid.bayer.com/kos/19050/hasUriTemplate>
+                <https://pid.bayer.com/kos/19050#8ea6ea1b-ffa5-47bc-8196-f07968f71c93> .
+
+<https://pid.bayer.com/pid/38b679fa-6e9a-4fcb-9c3d-115ad93f1450>
+        a       <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+        <https://pid.bayer.com/kos/19050/hasUriTemplate>
+                <https://pid.bayer.com/kos/19050#8ea6ea1b-ffa5-47bc-8196-f07968f71c93> .
+
+<https://pid.bayer.com/kos/19050#1da675fe-56c5-46b0-a6b8-19152b82b1d2>
+        a       <https://pid.bayer.com/kos/19050/GenericDataset> ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/pid/67c89447-1d3b-4504-8bb6-d3eb46505c05> ;
+        <https://pid.bayer.com/kos/19050#hasConsumerGroup>
+                <https://pid.bayer.com/kos/19050#bf2f8eeb-fdb9-4ee1-ad88-e8932fa8753c> ;
+        <https://pid.bayer.com/kos/19050/47119343>
+                <https://pid.bayer.com/kos/19050#48df94fc-a2cc-4e64-8664-83cc4d727ab6> , <https://pid.bayer.com/kos/19050#ea2e6672-13dc-4698-b2b5-780638a47f86> ;
+        <https://pid.bayer.com/kos/19050/646465>
+                <https://pid.bayer.com/kos/19050#cf33a012-868e-44f9-8f8a-0cd9a716a340> ;
+        <https://pid.bayer.com/kos/19050/author>
+                "superadmin@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/containsLicensedData>
+                true ;
+        <https://pid.bayer.com/kos/19050/dateCreated>
+                "2020-02-20T11:24:29.1769558Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <https://pid.bayer.com/kos/19050/distribution>
+                <https://pid.bayer.com/kos/19050#0ddde14e-641d-4309-85bd-ff6e977cf99e> ;
+        <https://pid.bayer.com/kos/19050/hasDataSteward>
+                "anotheruser@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/hasDraft>
+                <https://pid.bayer.com/kos/19050#f14e6eb0-29d7-4bef-8c7e-d7cd66f2c57a> ;
+        <https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/published> ;
+        <https://pid.bayer.com/kos/19050/hasInformationClassification>
+                <https://pid.bayer.com/kos/19050/Internal> ;
+        <https://pid.bayer.com/kos/19050/hasLabel>
+                "Generic Example Dataset" ;
+        <https://pid.bayer.com/kos/19050/hasLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/underDevelopment> ;
+        <https://pid.bayer.com/kos/19050/hasResourceDefinition>
+                "This is a generic example dataset to show the basic functionality of COLID. This entry is the currently published entry."^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML> ;
+        <https://pid.bayer.com/kos/19050/hasVersion>
+                "1" ;
+        <https://pid.bayer.com/kos/19050/isPersonalData>
+                false ;
+        <https://pid.bayer.com/kos/19050/lastChangeDateTime>
+                "2020-02-20T11:28:44.0053493Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <https://pid.bayer.com/kos/19050/lastChangeUser>
+                "superadmin@bayer.com" .

@@ -1,0 +1,356 @@
+version: "3.7"
+services:
+###################################################################################################
+# COLID Registration Service
+###################################################################################################
+  colid-registration-service:
+    container_name: colid-registration-service
+    build:
+      context: ./colid-registration-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z rabbitmq 5672;
+          do
+            echo Waiting for RabbitMQ startup;
+            sleep 3;
+          done;
+          echo RabbitMQ is ready;
+          /usr/bin/dotnet COLID.RegistrationService.WebApi.dll"
+    depends_on:
+      - colid-appdata-service
+      - fuseki
+      - rabbitmq
+      - elasticsearch
+      - redis
+    ports:
+      - 51770:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - AWS_ACCESS_KEY_ID=""
+      - AWS_SECRET_ACCESS_KEY=""
+      - AWS_SESSION_TOKEN=""
+      - ColidMessageQueueOptions__Username=${MESSAGEQUEUE_USERNAME}
+      - ColidMessageQueueOptions__Password=${MESSAGEQUEUE_PASSWORD}
+      - ColidTripleStoreOptions__Username=${GRAPHDATABASE_USERNAME}
+      - ColidTripleStoreOptions__Password=${GRAPHDATABASE_PASSWORD}
+    networks:
+      - frontend
+      - backend
+
+###################################################################################################
+# COLID Indexing Crawler Service
+###################################################################################################
+  colid-indexing-crawler-service:
+    container_name: colid-indexing-crawler-service
+    build:
+      context: ./colid-indexing-crawler-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z rabbitmq 5672;
+          do
+            echo Waiting for RabbitMQ startup;
+            sleep 3;
+          done;
+          echo RabbitMQ is ready;
+          /usr/bin/dotnet COLID.IndexingCrawlerService.WebApi.dll"
+    depends_on:
+      - fuseki
+      - rabbitmq
+      - elasticsearch
+      - redis
+    ports:
+      - 51780:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - AWS_ACCESS_KEY_ID=""
+      - AWS_SECRET_ACCESS_KEY=""
+      - AWS_SESSION_TOKEN=""
+      - ColidMessageQueueOptions__Username=${MESSAGEQUEUE_USERNAME}
+      - ColidMessageQueueOptions__Password=${MESSAGEQUEUE_PASSWORD}
+      - ColidTripleStoreOptions__Username=${GRAPHDATABASE_USERNAME}
+      - ColidTripleStoreOptions__Password=${GRAPHDATABASE_PASSWORD}
+    networks:
+      - frontend
+      - backend
+
+###################################################################################################
+# COLID Reporting Service
+###################################################################################################
+  colid-reporting-service:
+    container_name: colid-reporting-service
+    build:
+      context: ./colid-reporting-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z rabbitmq 5672;
+          do
+            echo Waiting for RabbitMQ startup;
+            sleep 3;
+          done;
+          echo RabbitMQ is ready;
+          /usr/bin/dotnet COLID.ReportingService.WebApi.dll"
+    depends_on:
+      - fuseki
+    ports:
+      - 51910:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - AWS_ACCESS_KEY_ID=""
+      - AWS_SECRET_ACCESS_KEY=""
+      - AWS_SESSION_TOKEN=""
+      - ColidTripleStoreOptions__Username=${GRAPHDATABASE_USERNAME}
+      - ColidTripleStoreOptions__Password=${GRAPHDATABASE_PASSWORD}
+    networks:
+      - frontend
+      - backend
+
+###################################################################################################
+# COLID Search Service
+###################################################################################################
+  colid-search-service:
+    container_name: colid-search-service
+    build:
+      context: ./colid-search-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z rabbitmq 5672;
+          do
+            echo Waiting for RabbitMQ startup;
+            sleep 3;
+          done;
+          echo RabbitMQ is ready;
+          /usr/bin/dotnet COLID.SearchService.WebApi.dll"
+    depends_on:
+      - rabbitmq
+      - elasticsearch
+      - redis
+    ports:
+      - 51800:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - AWS_ACCESS_KEY_ID=""
+      - AWS_SECRET_ACCESS_KEY=""
+      - AWS_SESSION_TOKEN=""
+      - ColidMessageQueueOptions__Username=${MESSAGEQUEUE_USERNAME}
+      - ColidMessageQueueOptions__Password=${MESSAGEQUEUE_PASSWORD}
+    networks:
+      - frontend
+      - backend
+
+###################################################################################################
+# COLID AppData Service
+###################################################################################################
+  colid-appdata-service:
+    container_name: colid-appdata-service
+    build:
+      context: ./colid-appdata-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z mysql 3306;
+          do
+            echo Waiting for MySQL startup;
+            sleep 3;
+          done;
+          echo MySQL is ready;
+          /usr/bin/dotnet COLID.AppDataService.WebApi.dll"
+    depends_on:
+      - mysql
+    ports:
+      - 51810:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - Database__User=${RELATIONAL_DATABASE_USERNAME}
+      - Database__Password=${RELATIONAL_DATABASE_PASSWORD}
+    networks:
+      - frontend
+      - backend
+
+###################################################################################################
+# Scheduler Service
+###################################################################################################
+  colid-scheduler-service:
+    container_name: colid-scheduler-service
+    build:
+      context: ./colid-scheduler-service
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z mysql 3306;
+          do
+            echo Waiting for MySQL startup;
+            sleep 3;
+          done;
+          echo MySQL is ready;
+          /usr/bin/dotnet COLID.Scheduler.Web.dll"
+    depends_on:
+      - colid-appdata-service
+      - elasticsearch
+      - mysql
+    ports:
+      - 51820:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - Database__User=${RELATIONAL_DATABASE_USERNAME}
+      - Database__Password=${RELATIONAL_DATABASE_PASSWORD}
+      - SmtpSettings__User=${SMTP_USERNAME}
+      - SmtpSettings__Password=${SMTP_PASSWORD}
+    networks:
+      - backend
+
+###################################################################################################
+# COLID Editor frontend
+###################################################################################################
+  colid-editor-frontend:
+    container_name: colid-editor-frontend
+    build:
+      context: ./colid-editor-frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4200:8080
+    depends_on:
+      - colid-registration-service
+      - colid-reporting-service
+      - colid-appdata-service
+    networks:
+      - frontend
+
+###################################################################################################
+# Data Marketplace frontend
+###################################################################################################
+  colid-data-marketplace-frontend:
+    container_name: colid-data-marketplace-frontend
+    build:
+      context: ./colid-data-marketplace-frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4300:8080
+    depends_on:
+      - colid-search-service
+    networks:
+      - frontend
+
+###################################################################################################
+# RabbitMQ Message Queue
+###################################################################################################
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: ${MESSAGEQUEUE_COOKIE}
+      RABBITMQ_DEFAULT_USER: ${MESSAGEQUEUE_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${MESSAGEQUEUE_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - backend
+
+###################################################################################################
+# Redis Cache
+###################################################################################################
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - backend
+
+###################################################################################################
+# Apache Jena Fuseki (SAPRQL server)
+###################################################################################################
+  fuseki:
+    container_name: fuseki
+    image: stain/jena-fuseki
+    volumes:
+      - ./fuseki-staging:/staging
+    command: bash -c "/staging/loader.sh && exec /jena-fuseki/fuseki-server --update --loc=/fuseki/databases/colid-dataset /colid-dataset"
+    environment:
+      - ADMIN_PASSWORD=${GRAPHDATABASE_PASSWORD}
+      - JVM_ARGS=-Xmx2g
+    ports:
+      - 3030:3030
+    networks:
+      - backend
+
+###################################################################################################
+# MySQL
+###################################################################################################
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${RELATIONAL_DATABASE_ROOT_PASSWORD}
+      MYSQL_USER: ${RELATIONAL_DATABASE_USERNAME}
+      MYSQL_PASSWORD: ${RELATIONAL_DATABASE_PASSWORD}
+    entrypoint: >
+      sh -c "
+        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' > /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+      "
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+
+###################################################################################################
+# Elasticsearch
+# Setup from https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
+###################################################################################################
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    environment:
+      - cluster.name=docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - backend
+
+###################################################################################################
+# Kibana
+# Setup from https://www.elastic.co/guide/en/kibana/6.8/docker.html
+###################################################################################################
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.4.2
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+    networks:
+      - backend
+
+volumes:
+  esdata:
+    driver: local
+  mysqldata: {}
+
+networks:
+  frontend:
+  backend:
