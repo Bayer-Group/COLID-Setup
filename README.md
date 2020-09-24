@@ -61,21 +61,6 @@ This repository helps settings up a local environment based on Docker Compose.
 | Apache Jena Fuseki Database Webinterface                 | http://localhost:3030/          | -                               | admin    | admin    |
 | RabbitMQ Webinterface                                    | http://localhost:15672/         | -                               | guest    | guest    |
 
-## GIT open source repository uploader
-This script will be used to upload automatically the current master branches of the web services with all updates in the repository to the open source repository. 
-Within this script a list of files is definied which should not become available for all because they contain evironment specific and
-confidential data. The script will remove those files from the git repository.
-
-Usage with parameters:
-```console
-./os_uploader.sh origin/master open_source/master "This is a new release"
-```
-    
-Usage without paramneters:
-```console
-./os_uploader.sh
-```
-
 ## Quick Tips
 
 Some quick tips and advices to work faster.
