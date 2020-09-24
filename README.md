@@ -33,7 +33,8 @@ This repository helps settings up a local environment based on Docker Compose.
     SMTP_PASSWORD=any
     ```
 5. Run `docker-compose up` to download and build all Docker images and startup the environment
-6. Load the given Turtle files (*.ttl) to the Apache Jena Fuseki database via its webinterface (see table at the end of this document)
+6. Wait for docker-compose to start up
+7. Open the COLID editor (see URL below). Go to the profile menu in the upper right corner and click on "Administration". Open the Metadata Graph Configuration sub-menu page and click the "Start reindex" button in the upper right corner.
 
 ### Known problems
 
