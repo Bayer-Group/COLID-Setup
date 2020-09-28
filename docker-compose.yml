@@ -6,7 +6,7 @@ services:
   colid-registration-service:
     container_name: colid-registration-service
     build:
-      context: ./colid-registration-service
+      context: ./COLID-Registration-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -44,7 +44,7 @@ services:
   colid-indexing-crawler-service:
     container_name: colid-indexing-crawler-service
     build:
-      context: ./colid-indexing-crawler-service
+      context: ./COLID-Indexing-Crawler-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -81,7 +81,7 @@ services:
   colid-reporting-service:
     container_name: colid-reporting-service
     build:
-      context: ./colid-reporting-service
+      context: ./COLID-Reporting-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -113,7 +113,7 @@ services:
   colid-search-service:
     container_name: colid-search-service
     build:
-      context: ./colid-search-service
+      context: ./COLID-Search-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -147,7 +147,7 @@ services:
   colid-appdata-service:
     container_name: colid-appdata-service
     build:
-      context: ./colid-appdata-service
+      context: ./COLID-AppData-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -176,7 +176,7 @@ services:
   colid-scheduler-service:
     container_name: colid-scheduler-service
     build:
-      context: ./colid-scheduler-service
+      context: ./COLID-Scheduler-Service
       dockerfile: Dockerfile
     entrypoint: /bin/sh
     command: >
@@ -208,7 +208,7 @@ services:
   colid-editor-frontend:
     container_name: colid-editor-frontend
     build:
-      context: ./colid-editor-frontend
+      context: ./COLID-Editor-Frontend
       dockerfile: Dockerfile
       args:
         ANGULAR_ENVIRONMENT: docker
@@ -228,7 +228,7 @@ services:
   colid-data-marketplace-frontend:
     container_name: colid-data-marketplace-frontend
     build:
-      context: ./colid-data-marketplace-frontend
+      context: ./COLID-Data-Marketplace-Frontend
       dockerfile: Dockerfile
       args:
         ANGULAR_ENVIRONMENT: docker
