@@ -351,10 +351,10 @@ services:
 
   kge-web-service:
     build:
-      context: ./kge-web-service
+      context: ./kge-Web-service
       dockerfile: Dockerfile
     command: npm start
-    container_name: kge-editor-backend
+    container_name: kge-web-service
     ports:
       - "8080:8080"
     volumes:

@@ -5,7 +5,5 @@ kge:FusekiLocal  a    kge:TriplestoreManagementSystem ;
         rdfs:label    "FusekiLocal" ;
         kge:Vendor    "Fuseki" ;
         kge:host      "localhost" ;
-        kge:password  "admin" ;
         kge:port      3030 ;
-        kge:protocol  "http" ;
-        kge:user      "admin" .
+        kge:protocol  "http" .
