@@ -345,6 +345,38 @@ services:
       - 5601:5601
     networks:
       - backend
+###################################################################################################
+# KGE Backend
+###################################################################################################
+
+  kge-web-service:
+    build:
+      context: ./kge-web-service
+      dockerfile: Dockerfile
+    command: npm start
+    container_name: kge-editor-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    networks:
+      - backend
+###################################################################################################
+# KGE Editor frontend
+###################################################################################################
+  kge-editor-frontend:
+    container_name: kge-editor-frontend
+    build:
+      context: ./KGE-Frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4400:8080
+    networks:
+      - frontend
 
 volumes:
   esdata:

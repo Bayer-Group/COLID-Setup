@@ -18,6 +18,8 @@ echo "Start uploading metadata graphs.
 ./tdbloader --graph https://pid.bayer.com/pid_ontology_oss/shacled/5.0                    --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/pid_ontology_oss__shacled__5.0.ttl
 ./tdbloader --graph https://pid.bayer.com/pid_ontology_oss/technical/5.0                  --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/pid_ontology_oss__technical__5.0.ttl
 ./tdbloader --graph https://pid.bayer.com/pid/mathematical_model_categories_taxonomy/1.0 --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/pid__metadata__mathematical_model_categories_taxonomy__1.0.ttl
+./tdbloader --graph https://pid.bayer.com/kge/triplestores                 --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestores.ttl
+./tdbloader --graph https://pid.bayer.com/kge/triplestoreSystems                  --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestoreSystems.ttl
 
 
 

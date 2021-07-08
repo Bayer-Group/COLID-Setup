@@ -30,3 +30,9 @@
 	path = COLID-Search-Service
 	url = https://github.com/Bayer-Group/COLID-Search-Service.git
 	branch = master
+[submodule "KGE-Web-service"]
+	path = KGE-Web-service
+	url = https://github.com/Bayer-Group/KGE-Web-service.git
+[submodule "KGE-Frontend"]
+	path = KGE-Frontend
+	url = https://github.com/Bayer-Group/KGE-Frontend.git
