@@ -356,7 +356,7 @@ services:
     command: npm start
     container_name: kge-web-service
     ports:
-      - "9090:8080"
+      - "8080:9090"
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules

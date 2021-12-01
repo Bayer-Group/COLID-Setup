@@ -5,6 +5,7 @@ kge:COLIDDataset  a     kge:Triplestore ;
    rdfs:label              "COLIDDataset" ;
         kge:queryPath   "/colid-dataset/query" ;
         kge:runsOn      kge:FusekiLocal ;
+         kge:restrictedAccess  false ;
         kge:updatePath  "/colid-dataset/update" ;
 		 kge:password            "admin" ;
 		 kge:user        "admin" .
