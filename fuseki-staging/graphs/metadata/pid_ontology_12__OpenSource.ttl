@@ -1,0 +1,2263 @@
+# baseURI: https://pid.bayer.com/kos/19050/
+# imports: http://datashapes.org/graphql
+# imports: http://spinrdf.org/spl
+
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix teamwork: <http://topbraid.org/teamwork#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix daaa__enterprise_core_ontology_1_0:  <http://pid.bayer.com/kos/19014/> .
+@prefix skos_core:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix swa:  <http://topbraid.org/swa#> .
+
+<http://pid.bayer.com/kos/19014/BrowsableResource>
+  rdfs:label       "Browsable Resource"@en ;
+  rdf:type         owl:Class ;
+  rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+  rdfs:comment     "A networked resource that can be opened in a web browser if access is granted e.g. a HTML documentation page of a resource." ;
+  daaa__enterprise_core_ontology_1_0:definition  "A networked resource that can be opened in a web browser if access is granted e.g. a HTML documentation page of a resource."@en ;
+  dash:abstract false ;
+.
+<http://pid.bayer.com/kos/19014/MaintenancePoint>
+    rdfs:label       "Maintenance Point"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+    rdfs:comment     "A networked resource that is an application which is used to maintain a specific resource e.g. TopBraid EDG (requires valid credentials)." ;
+    daaa__enterprise_core_ontology_1_0:definition  "A networked resource that is an application which is used to maintain a specific resource e.g. TopBraid EDG (requires valid credentials)."@de ;
+  dash:abstract false ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource>
+  a sh:NodeShape ;
+  rdfs:label       "Networked Resource"@en ;
+  rdfs:label       "Netzbasierte Resource"@de ;
+  rdf:type         owl:Class ;
+  sh:property <http://pid.bayer.com/kos/19014/NetworkedResource-hasContactPerson> ;
+  sh:property <http://pid.bayer.com/kos/19014/NetworkedResource-hasDistributionEndpointLifecycleStatus> ;
+  sh:property <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkAddress> ;
+  sh:property <http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkedResourceLabel> ;
+  rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:DigitalResource ;
+  sh:property <http://pid.bayer.com/kos/19014/NetworkedResource-type> ;
+  daaa__enterprise_core_ontology_1_0:definition  "A networked resource is a <a href=\"http://pid.bayer.com/kos/19014/DigitalResource\">digital resource</a> that is accessible in the communication network through the IP protocol."@en ;
+
+.
+daaa__enterprise_core_ontology_1_0:DigitalResource
+    rdfs:label       "Digital Resource"@en ;
+    rdfs:label       "Digitale Ressource"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:Resource ;
+    rdfs:comment     "A digital resource is a <a href=\"http://pid.bayer.com/kos/19014/Resource\">resource</a> that can be stored on and processed by computers." 
+.
+<http://pid.bayer.com/kos/19014/Resource>
+  a sh:NodeShape ;
+  rdfs:label       "Resource"@en ;
+  rdfs:label       "Ressource"@de ;
+  rdf:type         owl:Class ;
+  rdf:type         rdfs:Class ;
+  rdfs:subClassOf  owl:Thing ;
+  rdfs:comment     "A resource is a source or supply from which a benefit is produced. In an enterprise some resources are material stock, staff, cash etc." ;
+  daaa__enterprise_core_ontology_1_0:definition  "A resource is a source or supply from which a benefit is produced. In an enterprise some resources are material stock, staff, cash etc." ;
+  sh:property <http://pid.bayer.com/kos/19014/Resource-hasPID> ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasContactPerson>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasContactPerson> ;
+  sh:class <http://pid.bayer.com/kos/19014/Person> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Contact Person" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 20 ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasDistributionEndpointLifecycleStatus>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus> ;
+  sh:description "With this information data consumer to assess the lifecycle status of this Distribution Endpoint. It is preferred to set Distribution Endpoints that have been active for a while to the status \"deprecated\" instead of deleting them." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Distribution Endpoint Lifecycle Status" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 30 ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkAddress>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/hasNetworkAddress> ;
+  rdfs:label "has network hostname" ;
+  sh:datatype xsd:anyURI ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Target URI" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 90 ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource-hasNetworkedResourceLabel>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel> ;
+  sh:datatype rdf:HTML ;
+  sh:description "Thoroughly describe the endpoint" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Label"@en ;
+  sh:nodeKind sh:Literal ;
+  sh:order 10 ;
+.
+<http://pid.bayer.com/kos/19014/NetworkedResource-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Endpoint Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 4 ;
+.
+<http://pid.bayer.com/kos/19014/Ontology>
+  a sh:NodeShape ;
+  rdfs:label       "Ontologie"@de ;
+  rdfs:label       "Ontology"@en ;
+  a owl:Class ;
+  dash:abstract false ;
+  rdfs:comment     "An ontology is an explicit and formal specification of a shared conceptualization."@en ;
+  daaa__enterprise_core_ontology_1_0:definition  "An ontology is an explicit and formal specification of a shared conceptualization."@en ;
+  daaa__enterprise_core_ontology_1_0:wasDerivedFrom  owl:Ontology ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/RDFDataset> ;
+  sh:property <http://pid.bayer.com/kos/19014/Ontology-hasCompetencyQuestion> ;
+  sh:property <http://pid.bayer.com/kos/19014/Ontology-includesOntology> ;
+  sh:property <http://pid.bayer.com/kos/19014/Ontology-isSchemaOfDataset> ;
+  <https://pid.bayer.com/kos/19050/435897> "https://dataservices-icons.s3.eu-central-1.amazonaws.com/http%253A%252F%252Fpid.bayer.com%252Fkos%252F19014%252FOntology.svg" ;
+.
+<http://pid.bayer.com/kos/19014/Ontology-hasCompetencyQuestion>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/hasCompetencyQuestion> ;
+  sh:datatype rdf:HTML ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:maxCount 100 ;
+  sh:minCount 0 ;
+  sh:name "Competency Questions"@en ;
+  sh:nodeKind sh:Literal ;
+  sh:order "3"^^xsd:decimal ;
+.
+daaa__enterprise_core_ontology_1_0:altLabel
+    rdfs:label    "alternative label"@en ;
+    rdfs:label    "Alternativbezeichner"@de ;
+    rdf:type      owl:AnnotationProperty ;
+    rdfs:comment  "This property is used to define alternative labels for a resource" ;
+    rdfs:domain   owl:Thing ;
+    daaa__enterprise_core_ontology_1_0:definition  "This property is used to define alternative labels for a resource" ;
+    daaa__enterprise_core_ontology_1_0:copyOf  skos_core:altLabel 
+.
+daaa__enterprise_core_ontology_1_0:hasCompetencyQuestion
+    rdfs:label    "has competency question"@en ;
+    rdf:type      owl:DatatypeProperty ;
+    rdfs:comment  "Question to be answered by exploring and querying the ontology. The question is expressed informally at the conceptual level, not as formal query."@en ;
+    rdfs:domain   daaa__enterprise_core_ontology_1_0:Ontology ;
+    rdfs:range    rdf:HTML ;
+    daaa__enterprise_core_ontology_1_0:definition  "Question to be answered by exploring and querying the ontology. The question is expressed informally at the conceptual level, not as formal query."@en ;
+    daaa__enterprise_core_ontology_1_0:altLabel  "has CQ"@en 
+.
+<http://pid.bayer.com/kos/19014/Ontology-includesOntology>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/includesOntology> ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Includes Ontology" ;
+  sh:nodeKind sh:IRI ;
+.
+<http://pid.bayer.com/kos/19014/Ontology-isSchemaOfDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/isSchemaOfDataset> ;
+  sh:description "This property links an ontology to the dataset which populates the ontology. E.g. the PID application ontology is the schema of the dataset of the PID application, which is stored in the triplestore of the PID application backend." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Is Schema Of Dataset" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<http://pid.bayer.com/kos/19014/PermanentIdentifier>
+  a sh:NodeShape ;
+    rdfs:label       "Permanent Identifier"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:Identifier ;
+    rdfs:comment     "This concept represents all permanent identifiers according to the PID idea." ;
+    daaa__enterprise_core_ontology_1_0:definition  "This concept represents all permanent identifiers according to the PID idea."@en ;
+  sh:property <http://pid.bayer.com/kos/19014/PermanentIdentifier-hasURITemplate> ;
+.
+daaa__enterprise_core_ontology_1_0:Identifier
+    rdfs:label       "Identifier"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  owl:Thing ;
+    rdfs:comment     "This is a generic concept that represents any kind of identifier." ;
+    daaa__enterprise_core_ontology_1_0:definition  "This is a generic concept that represents any kind of identifier."@en ;
+    daaa__enterprise_core_ontology_1_0:example  "Baynumber, ISBN, URI, PID, CWID" 
+.
+<http://pid.bayer.com/kos/19014/PermanentIdentifier-hasURITemplate>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasURITemplate> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Uri Template" ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint>
+  a sh:NodeShape ;
+  dash:abstract false ;
+  rdfs:label       "Query Endpoint"@en ;
+  rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+  rdfs:comment     "A networked resource that supports a query language e.g. SQL, SPARQL, CYPHER (might require valid credentials) based on a well-defined protocol." ;
+  daaa__enterprise_core_ontology_1_0:definition  "A networked resource that supports a query language e.g. SQL, SPARQL, CYPHER (might require valid credentials) based on a well-defined protocol." ;
+  sh:property <http://pid.bayer.com/kos/19014/QueryEndpoint-> ;
+  sh:property <http://pid.bayer.com/kos/19014/QueryEndpoint--0> ;
+  sh:property <http://pid.bayer.com/kos/19014/QueryEndpoint--1> ;
+  sh:property <http://pid.bayer.com/kos/19014/QueryEndpoint--2> ;
+  sh:property <http://pid.bayer.com/kos/19014/QueryEndpoint-hasNetworkAddress> ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint->
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/270610> ;
+  sh:description "Variant of Query Endpoint. Pick an existing variant or enter a new one. Mind that upper/lower case writing and typos will persist and cannot be changed." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:minCount 0 ;
+  sh:name "Query Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "36"^^xsd:decimal ;
+  <https://pid.bayer.com/ns/shacl/fieldType> <https://pid.bayer.com/ns/shacl/fieldType#extendableList> ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint--0>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/270611> ;
+  sh:datatype xsd:string ;
+  sh:description "The connection string and system name is the information which is needed to access the data system e.g. by-dch2rh01.de.bayer.cnb:33015" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Connection String / System Name" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 34 ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint--1>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/270612> ;
+  sh:datatype xsd:string ;
+  sh:description "Put in the exact path and name to the technical element in the database to find the query details." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Tech. Element Name / Path to Element" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 38 ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint--2>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasAdGroups> ;
+  sh:datatype xsd:string ;
+  sh:description "Add the active directory information e.g ad-bayer-cnb that dat aconsumers must be a member of." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:minCount 0 ;
+  sh:name "AD-Group / SAP BEGRU" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 32 ;
+.
+<http://pid.bayer.com/kos/19014/QueryEndpoint-hasNetworkAddress>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/hasNetworkAddress> ;
+  rdfs:label "has network hostname" ;
+  sh:datatype xsd:anyURI ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Target URI" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 90 ;
+.
+daaa__enterprise_core_ontology_1_0:hasNetworkAddress
+    rdfs:label    "Netzwerkadresse"@de ;
+    rdfs:label    "network address"@en ;
+    rdf:type      owl:DatatypeProperty ;
+    rdfs:comment  "This is the IP or the URL where the networked resource is accessible." ;
+    rdfs:domain   daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+    rdfs:range    xsd:anyURI ;
+    daaa__enterprise_core_ontology_1_0:definition  "This is the IP or the URL where the networked resource is accessible."@en 
+.
+daaa__enterprise_core_ontology_1_0:hasPID
+    rdfs:label    "has PID"@en ;
+    rdf:type      owl:ObjectProperty ;
+    rdfs:comment  "This property links a resource to its permanent identifier." ;
+    rdfs:domain   daaa__enterprise_core_ontology_1_0:Resource ;
+    rdfs:range    daaa__enterprise_core_ontology_1_0:PermanentIdentifier ;
+    daaa__enterprise_core_ontology_1_0:definition  "This property links a resource to its permanent identifier." 
+.
+<http://pid.bayer.com/kos/19014/Resource-hasPID>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/hasPID> ;
+  rdfs:label "PID URI" ;
+  sh:group <https://pid.bayer.com/kos/19050/PIDURI> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "PID URI" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<http://pid.bayer.com/kos/19014/RestAPI>
+    rdfs:label       "Rest API"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+    rdfs:comment     "A networked resource that is designed according to the RESTful architecture style (might require valid credentials)." ;
+    daaa__enterprise_core_ontology_1_0:definition  "A networked resource that is designed according to the RESTful architecture style (might require valid credentials)."@en ;
+  dash:abstract false ;
+.
+<http://pid.bayer.com/kos/19014/SharedFile>
+    rdfs:label       "Shared File"@en ;
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  daaa__enterprise_core_ontology_1_0:NetworkedResource ;
+    rdfs:comment     "A file that can be downloaded if access is granted." ;
+    daaa__enterprise_core_ontology_1_0:definition  "A file that can be downloaded if access is granted." ;
+  dash:abstract false ;
+.
+<http://pid.bayer.com/kos/19014/hasDataSteward>
+  rdfs:comment "A data steward is a person that takes care a data containing resource is findable, accessible, interoperable and reusable.&nbsp;&nbsp;" ;
+  rdfs:label    "has data steward"@en ;
+  rdf:type      owl:ObjectProperty ;
+  rdfs:comment  "The person who has the role of a data steward for this resource" ;
+  rdfs:domain   owl:Thing ;
+  rdfs:range    daaa__enterprise_core_ontology_1_0:Person ;
+  daaa__enterprise_core_ontology_1_0:definition  "The person who has the role of a data steward for this resource"@en ;
+  daaa__enterprise_core_ontology_1_0:editorialNote  "2019.04.29: Marius (GIVTK): Suggestion: More specified domain, e.g. eco:Dataset. Currently, the domain of this property is owl:Thing. I assume not every owl:Thing can have an assigned data steward."@en ;
+  daaa__enterprise_core_ontology_1_0:editorialNote  "2019.05.22: Gökhan (GGVCM): changed the domain to Resource. Requires clarification with the PID ontology if it should be more specific, e.g. Dataset" 
+.
+daaa__enterprise_core_ontology_1_0:editorialNote
+    rdfs:label    "editorial note"@en ;
+    rdfs:label    "Allgemeine Notizen"@de ;
+    rdf:type      owl:AnnotationProperty ;
+    rdfs:comment  "Any notes that can be helpful for users of the resource. Could be change notes or application information." ;
+    rdfs:domain   owl:Thing ;
+    rdfs:range    xsd:string ;
+    daaa__enterprise_core_ontology_1_0:definition  "Any notes that can be helpful for users of the resource. Could be change notes or application information." ;
+    daaa__enterprise_core_ontology_1_0:editorialNote  "original definition from skos: skos:editorialNote supplies information that is an aid to administrative housekeeping, such as reminders of editorial work still to be done, or warnings in the event that future editorial changes might be mad " ;
+    daaa__enterprise_core_ontology_1_0:copyOf  skos_core:editorialNote 
+.
+
+
+
+<http://pid.bayer.com/kos/19050/DistributionEndpoints>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all information for distribution endpoints" ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all information for distribution endpoints" ;
+  rdfs:label "Distribution Endpoints"@en ;
+  sh:order "100"^^xsd:decimal ;
+.
+<http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all not editable and invisible technical Information " ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all not editable and invisible technical Information " ;
+  rdfs:label "Invisible Technical Information" ;
+  sh:order "998"^^xsd:decimal ;
+.
+<http://pid.bayer.com/kos/19050/LinkTypes>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "A group for all link types between resources"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all link types" ;
+  rdfs:label "Linked Resources" ;
+  sh:order "90"^^xsd:decimal ;
+.
+rdfs:Resource
+  a sh:NodeShape ;
+.
+owl:Thing
+  a sh:NodeShape ;
+.
+<https://pid.bayer.com/kos/19050#ConsumerGroup>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "The consumer groups." ;
+  rdfs:label "ConsumerGroup"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-hasConsumerGroupContactPerson> ;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-hasConsumerGroupLifecycleStatus> ;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-hasDefaultPidUriTemplate> ;
+  sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-hasAdRole> ;
+  sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-hasPidUriTemplate> ;
+  sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-name> ;
+  sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-type> ;
+.
+<https://pid.bayer.com/kos/19050#ConsumerGroup-hasConsumerGroupContactPerson>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> ;
+  sh:description "The contact person for this consumer group." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Contact Person" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "30"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#ConsumerGroup-hasConsumerGroupLifecycleStatus>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus> ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Lifecycle Status" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "60"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#ConsumerGroup-hasDefaultPidUriTemplate>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasDefaultPidUriTemplate> ;
+  sh:class <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Default Pid Uri Template" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "40"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#ExtendedUriTemplate>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "Extended URI Templates." ;
+  rdfs:label "ExtendedUriTemplate"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050#ExtendedUriTemplate-UseHttpScheme> ;
+  sh:property <https://pid.bayer.com/kos/19050#ExtendedUriTemplate-hasOrder> ;
+  sh:property <https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasPidUriSearchRegex> ;
+  sh:property <https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasReplacementString> ;
+  sh:property <https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasTargetUriMatchRegex> ;
+  sh:property <https://pid.bayer.com/kos/19050/ExtendedUriTemplate-label> ;
+  sh:property <https://pid.bayer.com/kos/19050/ExtendedUriTemplate-type> ;
+.
+<https://pid.bayer.com/kos/19050#ExtendedUriTemplate-UseHttpScheme>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#UseHttpScheme> ;
+  sh:datatype xsd:boolean ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Http Scheme" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "4"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#ExtendedUriTemplate-hasOrder>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasOrder> ;
+  sh:description "The order describes the order in which the extended uris are considered in the configuration of the proxy." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Order" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "5"^^xsd:decimal ;
+  sh:pattern "^[0-9]*$" ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplate>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "Templates for PID URIs."@en ;
+  rdfs:label "Pid Uri Template"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050#PidUriTemplate-BaseURL> ;
+  sh:property <https://pid.bayer.com/kos/19050#PidUriTemplate-IDLength> ;
+  sh:property <https://pid.bayer.com/kos/19050#PidUriTemplate-LifecycleStatus> ;
+  sh:property <https://pid.bayer.com/kos/19050/PidUriTemplate-hasPidUriTemplateIdType> ;
+  sh:property <https://pid.bayer.com/kos/19050/PidUriTemplate-hasPidUriTemplateSuffix> ;
+  sh:property <https://pid.bayer.com/kos/19050/PidUriTemplate-hasRoute> ;
+  sh:property <https://pid.bayer.com/kos/19050/PidUriTemplate-type> ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplate-BaseURL>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasBaseUrl> ;
+  sh:datatype xsd:string ;
+  sh:description "The base URL is the prefix of both a PID URI template and the PID URIs generated from it." ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Base URL" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "0"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplate-IDLength>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasIdLength> ;
+  sh:datatype xsd:string ;
+  sh:description """If the PID URI Template field ID Type is of type Number, then the ID Length defines the number of digits that occur in this number. The number of a uniquely generated PID URI has a fixed number of digits, where higher digits are filled with zeros.
+"""@en ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "ID Length"@en ;
+  sh:nodeKind sh:Literal ;
+  sh:order 3 ;
+  sh:pattern "^[0-9]+$" ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplate-LifecycleStatus>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasPidUriTemplateLifecycleStatus> ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Lifecycle Status" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "4"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplateIdType>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "Pid Uri Template ID Type"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050#PidUriTemplateSuffix>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "PidUriTemplate Suffix"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050#UseHttpScheme>
+  a owl:DatatypeProperty ;
+  rdfs:comment "If the variable {encodedPidUri} is used in the replacement string, the field HTTP Scheme can be used to decide whether the variable {encodedPidUri} should contain http instead of https. If HTTP Scheme is true, http is used, otherwise https." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ExtendedUriTemplate> ;
+  rdfs:label "Use Http Scheme" ;
+.
+<https://pid.bayer.com/kos/19050#hasAdRole>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The Azure Active Directory role assigned to this consumer group." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+  rdfs:label "hasAdRole"@en ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050#hasBaseUrl>
+  a owl:DatatypeProperty ;
+  rdfs:comment """<div lang="">
+<div>The&nbsp;base&nbsp;URL&nbsp;is&nbsp;the&nbsp;prefix&nbsp;of&nbsp;both&nbsp;a&nbsp;PID&nbsp;URI&nbsp;template&nbsp;and&nbsp;the&nbsp;PID&nbsp;URIs&nbsp;generated&nbsp;from&nbsp;it.</div>
+</div>"""^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "hasBaseUrl"@en ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050#hasConsumerGroup>
+  a owl:ObjectProperty ;
+  rdfs:comment "The consumer group related to the resource." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "hasConsumerGroup"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+.
+<https://pid.bayer.com/kos/19050#hasIdLength>
+  a owl:DatatypeProperty ;
+  rdfs:comment "If the PID URI Template field ID Type is of type Number, then the ID Length defines the number of digits that occur in this number. The number of a uniquely generated PID URI has a fixed number of digits, where higher digits are filled with zeros." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "hasIdLength"@en ;
+.
+<https://pid.bayer.com/kos/19050#hasOrder>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The order describes the order in which the extended URIs are considered in the configuration of the proxy." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ExtendedUriTemplate> ;
+  rdfs:label "Order" ;
+.
+<https://pid.bayer.com/kos/19050#hasPidUriSearchRegex>
+  a owl:DatatypeProperty ;
+  rdfs:comment "A regular expression that must match the PID URI of an entry (e.g. the PID URI of an entry or a distribution endpoint) so that this Extended URI Template is applied and a proxy entry with regular expressions is created." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ExtendedUriTemplate> ;
+  rdfs:label "hasPidUriSearchRegex"@en ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050#hasPidUriTemplate>
+  a owl:ObjectProperty ;
+  rdfs:comment "Which PID URI template belongs to this consumer group." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+  rdfs:label "hasPidUriTemplate"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+.
+<https://pid.bayer.com/kos/19050#hasPidUriTemplateIdType>
+  a owl:ObjectProperty ;
+  rdfs:comment "The ID Type of a PID URI template distinguishes between uniquely generated GUIDs and incremental numbers. GUIDs consist of 32 hexadecimal characters and 4 hyphens, which are generated randomly. Numbers are incremented from 0 for each PID URI template, whereby free spaces can be reused as soon as they are released after use." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "hasPidUriTemplateIdType"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050#PidUriTemplateIdType> ;
+.
+<https://pid.bayer.com/kos/19050#hasPidUriTemplateSuffix>
+  a owl:ObjectProperty ;
+  rdfs:comment "The symbol at the end of the PID URI Template."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "hasPidUriTemplateSuffix"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050#PidUriTemplateSuffix> ;
+.
+<https://pid.bayer.com/kos/19050#hasReplacementString>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The Replacement String is the new destination address to which a request should additionally be forwarded. All characters valid for a URL can be used and added. Furthermore, the two variables {targetUri} and {encodedPidUri}, as well as the RegEx groups $1 to $x from the PID URI Search Regex are available and can be added to the Replacement String. If the regular expressions match, the {targetUri} variable matches the target URI from the distribution endpoint and {encodedPidUri} variable matches the URL-encoded PID URI." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ExtendedUriTemplate> ;
+  rdfs:label "hasReplacementString"@en ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050#hasRoute>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The route of a PID URI template is a definable intermediate path, which is set between the Base URL and the ID Type." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "hasRoute"@en ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050#hasTargetUriMatchRegex>
+  a owl:DatatypeProperty ;
+  rdfs:comment "A regular expression that must match the target address of an entry (e.g. the target address of a distribution endpoint) so that this Extended URI Template is applied and a proxy entry with regular expressions is created." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ExtendedUriTemplate> ;
+  rdfs:label "hasTargetUriMatchRegex" ;
+  rdfs:range xsd:string ;
+.
+<https://pid.bayer.com/kos/19050/225896>
+  a owl:ObjectProperty ;
+  rdfs:comment "The resource replaces another resource. This is distinct from a version link." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "Is replaced by" ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/227898>
+  a owl:ObjectProperty ;
+  rdfs:label "Uses" ;
+.
+<https://pid.bayer.com/kos/19050/270610>
+  a rdf:Property ;
+  rdfs:comment "Variant of Query Endpoint. Pick an existing variant or enter a new one. Mind that upper/lower case writing and typos will persist and cannot be changed."@en ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/QueryEndpoint> ;
+  rdfs:label "has Query Type" ;
+.
+<https://pid.bayer.com/kos/19050/270611>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The connection string and system name is the information which is needed to access the data system e.g. by-dch2rh01.de.bayer.cnb:33015" ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/QueryEndpoint> ;
+  rdfs:label "has Connection String" ;
+.
+<https://pid.bayer.com/kos/19050/270612>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Put in the exact path and name to the technical element in the database to find the query details." ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/QueryEndpoint> ;
+  rdfs:label "has Tech Element Name" ;
+.
+<https://pid.bayer.com/kos/19050/367403>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "Metadata Graph Configuration"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--1> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--10> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--11> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--2> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--3> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--4> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--5> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--7> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403--9> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-8> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-editorialNote> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-startTime> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-type> ;
+.
+<https://pid.bayer.com/kos/19050/367403->
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/846513> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Consumer Group Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "6"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--1>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/841236> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Extended URI Template Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "8"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--10>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/852149> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Link History Graph" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 13 ;
+.
+<https://pid.bayer.com/kos/19050/367403--11>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/852150> ;
+  sh:description "Category Filter Graph" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Category Filter Graph" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "14"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--2>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/895123> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Keyword Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "5"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--3>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/875123> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:minCount 1 ;
+  sh:name "Metadata Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 3 ;
+.
+<https://pid.bayer.com/kos/19050/367403--4>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/891201> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "PID URI Templates graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "7"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--5>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/852147> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Resource Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 2 ;
+.
+<https://pid.bayer.com/kos/19050/367403--7>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/844122> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Resource History Graph" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "11"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403--9>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/852148> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Resource Draft Graph" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 12 ;
+.
+<https://pid.bayer.com/kos/19050/367403-8>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/852810> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:name "Instance Graphs" ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 0 ;
+  sh:order "5"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403-editorialNote>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/editorialNote> ;
+  sh:datatype rdf:HTML ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Editorial Note" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403-startTime>
+  a sh:PropertyShape ;
+  sh:path <http://pid.bayer.com/kos/19014/startTime> ;
+  sh:datatype xsd:dateTime ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Start date/time" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "0"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/367403-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Entity Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/435897>
+  a owl:AnnotationProperty ;
+  <http://pid.bayer.com/kos/19014/definition> "This property links a RDFS Class or OWL Class to an image file representing this concept as an icon.&nbsp;"@en ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "2020.06.18 Goekhan Coskun: this property was introduced to enable the visualization of icons in the Knowledge Graph Explorer tool, which is primarily a requirement from COLID."@en ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "2020.07.02 Goekhan Coskun: the type of this property has been changed to AnnotationProperty because we want to assign icons to classes and not instances for now."@en ;
+  rdfs:comment "This property links a RDFS Class or OWL Class to an image file representing this concept as an icon.&nbsp;"@en ;
+  rdfs:domain owl:Thing ;
+  rdfs:label "has concept icon"@en ;
+  rdfs:label "hat Konzeptsymbol"@de ;
+  rdfs:range xsd:anyURI ;
+.
+<https://pid.bayer.com/kos/19050/444501>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/444556> ;
+  rdfs:label "Link to Dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/444505>
+  a owl:ObjectProperty ;
+  rdfs:comment "This relationship connects a sub-column to its higher level column in a nested data array structure, as is available in Google BigQuery." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/444582> ;
+  rdfs:label "is nested column of" ;
+  rdfs:range <https://pid.bayer.com/kos/19050/444582> ;
+.
+<https://pid.bayer.com/kos/19050/444556>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "Elemental units of information, can be classes, properties, tables and column descriptions. These are registered to explain and construct more complex resources and data assets." ;
+  rdfs:label "Core Entities"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  sh:property <https://pid.bayer.com/kos/19050/444556-> ;
+.
+<https://pid.bayer.com/kos/19050/444556->
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/444501> ;
+  sh:class <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:minCount 0 ;
+  sh:name "Link to Dataset" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "10"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/444558>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "Data and information assets that are constructed from multiple core elements, classes and concepts." ;
+  rdfs:label "Resources"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/444582>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  rdfs:comment "Columns, represented in their column header, as in databases or file based data." ;
+  rdfs:label "Column"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/444556> ;
+  sh:property <https://pid.bayer.com/kos/19050/444582-> ;
+  sh:property <https://pid.bayer.com/kos/19050/444582--0> ;
+  sh:property <https://pid.bayer.com/kos/19050/444582--1> ;
+  sh:property <https://pid.bayer.com/kos/19050/444582-2> ;
+.
+<https://pid.bayer.com/kos/19050/444582->
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/444622> ;
+  sh:class <https://pid.bayer.com/kos/19050/444586> ;
+  sh:description "This property links the specific column as described with its individual type of instance data with a specified table." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:minCount 0 ;
+  sh:name "Is part of table" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "20"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/444582--0>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/444632> ;
+  sh:datatype xsd:string ;
+  sh:description "Alternative names that are used in other legacy sources." ;
+  sh:group <https://pid.bayer.com/kos/19050/ColumnInformation> ;
+  sh:minCount 0 ;
+  sh:name "Synonyms" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "20"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/444582--1>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/444642> ;
+  sh:datatype xsd:string ;
+  sh:description "The data type of a column defines what value the column can hold." ;
+  sh:group <https://pid.bayer.com/kos/19050/ColumnInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Data Type" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "10"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/444582-2>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/444505> ;
+  sh:class <https://pid.bayer.com/kos/19050/444582> ;
+  sh:description "This relationship connects a sub-column to its higher level column in a nested data array structure, as is available in Google BigQuery." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:minCount 0 ;
+  sh:name "Is nested column of" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "21"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/444586>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  rdfs:comment "Table as a unit of information in a database or a file." ;
+  rdfs:label "Table"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/444556> ;
+.
+<https://pid.bayer.com/kos/19050/444622>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links the specific column as described with its individual type of instance data with a specified table." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/444582> ;
+  rdfs:label "is part of table"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/444586> ;
+.
+<https://pid.bayer.com/kos/19050/444632>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Alternative names that are used in other legacy sources." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/444582> ;
+  rdfs:label "Synonyms"@en ;
+.
+<https://pid.bayer.com/kos/19050/444642>
+  a owl:DatatypeProperty ;
+  rdfs:comment "The data type of a column defines what value the column can hold." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/444582> ;
+  rdfs:label "Data Type"@en ;
+.
+<https://pid.bayer.com/kos/19050/47119343>
+  a owl:ObjectProperty ;
+  <http://pid.bayer.com/kos/19014/definition> "This property is used to assign a list of keywords to a resource like free tagging fields."@en ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "2019.10.14 (GGVCM) Added as ObjectProperty for the PID application, because it simplifies the implementation"@en ;
+  rdfs:comment "While COLID provides full keyword search capability, this field allows added functionality to freely categorize COLID entries along any property of interest that is not covered by another metadata field. Keywords/tags can be used to filter search results in the Marketplace for resources sharing the same category/property. Examples are project or product names, systems, or business area. It should be a combination of short keywords/tags instead of long, complex ones." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "keywords" ;
+  rdfs:range <https://pid.bayer.com/kos/19050/Keyword> ;
+.
+<https://pid.bayer.com/kos/19050/546454>
+  a owl:ObjectProperty ;
+  rdfs:comment "The person who requested the last change without editing the resource entry, e.g. setting a resource status to \"Mark for Deletion\"." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "Change Requester"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/646465>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "was created with graph config "@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/367403> ;
+.
+<https://pid.bayer.com/kos/19050/788854>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links the mapping resource to the resource which is the source of the mapping." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/Mapping> ;
+  rdfs:label "has source"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/841236>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Extended URI Templates graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/844122>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Resource History graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/846513>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Consumer Groups graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/852147>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Resources graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/852148>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Resource Draft graph" ;
+.
+<https://pid.bayer.com/kos/19050/852149>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Link History graph" ;
+.
+<https://pid.bayer.com/kos/19050/852150>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Category Filter Graph" ;
+.
+<https://pid.bayer.com/kos/19050/852810>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has instance graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/875123>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Metadata graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/885555>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links the mapping resource to the resource which is the target of the mapping." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/Mapping> ;
+  rdfs:label "has target"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/891201>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has PID URI Templates graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/895123>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/367403> ;
+  rdfs:label "has Keywords graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/ColumnInformation>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all column relevant information" ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all column relevant information" ;
+  rdfs:label "Column Information"@en ;
+  sh:order "50"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ConsumerGroup-hasAdRole>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasAdRole> ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "AD Role" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "20"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ConsumerGroup-hasPidUriTemplate>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasPidUriTemplate> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1000 ;
+  sh:minCount 1 ;
+  sh:name "Pid Uri Templates" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "50"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ConsumerGroup-name>
+  a sh:PropertyShape ;
+  sh:path rdfs:label ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Name" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "10"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ConsumerGroup-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Entity Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 70 ;
+.
+<https://pid.bayer.com/kos/19050/ConsumerGroupLifecycleStatus>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "Consumer Group Lifecycle Status" ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/DataLakeEndpoint>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  rdfs:label "Data Lake Endpoint"@en ;
+  rdfs:subClassOf <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  sh:property <https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasAdGroups> ;
+  sh:property <https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasAmazonResourceName> ;
+  sh:property <https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasJupyterHubConnection> ;
+.
+<https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasAdGroups>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasAdGroups> ;
+  sh:datatype xsd:string ;
+  sh:description "AD Security Groups that provide read permission" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:minCount 0 ;
+  sh:name "AD Groups" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 50 ;
+.
+<https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasAmazonResourceName>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasAmazonResourceName> ;
+  sh:datatype xsd:string ;
+  sh:description "Amazon Resource Name of the S3" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "ARN" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 40 ;
+.
+<https://pid.bayer.com/kos/19050/DataLakeEndpoint-hasJupyterHubConnection>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasJupyterHubConnection> ;
+  sh:datatype rdf:HTML ;
+  sh:description "Connection string" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "JupyterHub Connection" ;
+  sh:nodeKind sh:Literal ;
+  sh:order 60 ;
+.
+<https://pid.bayer.com/kos/19050/Definition>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all Objects for Definition" ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all Objects for Definition" ;
+  rdfs:label "Definition"@en ;
+  sh:order "20"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/DistributionEndpointLifecycleStatus>
+  a owl:Class ;
+  rdfs:comment "Status of a Distribution Endpoint of a PID resource. Allows to keep a deprecated endpoint visible, but ignore it for the URI redirect process." ;
+  rdfs:label "Distribution Endpoint Lifecycle Status"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasPidUriSearchRegex>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasPidUriSearchRegex> ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "PID URI Search Regex" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasReplacementString>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasReplacementString> ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Replacement String" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "3"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ExtendedUriTemplate-hasTargetUriMatchRegex>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasTargetUriMatchRegex> ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Target URI Match Regex" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ExtendedUriTemplate-label>
+  a sh:PropertyShape ;
+  sh:path rdfs:label ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Name" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "0"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/ExtendedUriTemplate-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Entity Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "3"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/FirstEntry>
+  a <https://pid.bayer.com/kos/19050/PIDEntry> ;
+  rdfs:label "FirstEntry" ;
+.
+<https://pid.bayer.com/kos/19050/GenericDataset>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  <http://pid.bayer.com/kos/19014/definition> "Any dataset that is not an RDF dataset, nor one of the more specific types of non-RDF datasets. It can be a file like xml, xls, csv or data stored in systems like sql, MongoDB, Neo4J etc."@en ;
+  rdfs:comment "Any dataset that is not an RDF dataset, nor one of the more specific types of non-RDF datasets. It can be a file like xml, xls, csv or data stored in systems like sql, MongoDB, Neo4J etc." ;
+  rdfs:label "Generic Dataset"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  <https://pid.bayer.com/kos/19050/435897> "https://dataservices-icons.s3.eu-central-1.amazonaws.com/https%253A%252F%252Fpid.bayer.com%252Fkos%252F19050%252FGenericDataset.svg" ;
+.
+<https://pid.bayer.com/kos/19050/InformationClassification>
+  a owl:Class ;
+  rdfs:label "Information Classification"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/Internal>
+  a <https://pid.bayer.com/kos/19050/InformationClassification> ;
+  rdfs:label "Internal"@en ;
+.
+<https://pid.bayer.com/kos/19050/Keyword>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "Keyword"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050/Keyword-label> ;
+  sh:property <https://pid.bayer.com/kos/19050/Keyword-type> ;
+.
+<https://pid.bayer.com/kos/19050/Keyword-label>
+  a sh:PropertyShape ;
+  sh:path rdfs:label ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/PreferedLabel> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Label" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/Keyword-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Entity Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/LifeCycleStatus>
+  a owl:Class ;
+  rdfs:comment "Status of the actual resource that is registered in PID." ;
+  rdfs:label "Lifecycle Status"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/Mapping>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  rdfs:comment "This concept represents a mapping of a dataset to an ontology. It describes how elements of a dataset like tables and columns are mapped to the concepts and properties of an ontology." ;
+  rdfs:label "Mapping"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/RDFDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/Mapping-> ;
+  sh:property <https://pid.bayer.com/kos/19050/Mapping--0> ;
+  <https://pid.bayer.com/kos/19050/435897> "https://dataservices-icons.s3.eu-central-1.amazonaws.com/https%253A%252F%252Fpid.bayer.com%252Fkos%252F19050%252FMapping.svg" ;
+.
+<https://pid.bayer.com/kos/19050/Mapping->
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/788854> ;
+  sh:description "This property links the mapping resource to the resource which is the source of the mapping." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:minCount 0 ;
+  sh:name "Has Source Resource" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/Mapping--0>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/885555> ;
+  sh:description "This property links the mapping resource to the resource which is the target of the mapping." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:minCount 0 ;
+  sh:name "Has Target Resource" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/MathematicalModel>
+  a owl:Class ;
+  a sh:NodeShape ;
+  dash:abstract false ;
+  <http://pid.bayer.com/kos/19014/definition> "This concept represents models which have been created by data scientists."@en ;
+  rdfs:comment "This concept represents models which have been created by data scientists."@en ;
+  rdfs:label "Mathematical Model"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/444558> ;
+  sh:property <https://pid.bayer.com/kos/19050/MathematicalModel-appliedToDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/MathematicalModel-createdFromDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/MathematicalModel-hasMathematicalModelCategory> ;
+  <https://pid.bayer.com/kos/19050/435897> "https://dataservices-icons.s3.eu-central-1.amazonaws.com/https%253A%252F%252Fpid.bayer.com%252Fkos%252F19050%252FMathematicalModel.svg" ;
+.
+<https://pid.bayer.com/kos/19050/MathematicalModel-appliedToDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/appliedToDataset> ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Applied to Dataset"@en ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/MathematicalModel-createdFromDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/createdFromDataset> ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Created From Dataset"@en ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/MathematicalModel-hasMathematicalModelCategory>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasMathematicalModelCategory> ;
+  sh:description "Select category terms that apply to the registered mathematical model."@en ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:maxCount 7 ;
+  sh:minCount 0 ;
+  sh:name "Mathematical Model Category"@en ;
+  sh:nodeKind sh:IRI ;
+  sh:order "3"^^xsd:decimal ;
+  <https://pid.bayer.com/ns/shacl/fieldType> <https://pid.bayer.com/ns/shacl/fieldType#hierarchy> ;
+.
+<https://pid.bayer.com/kos/19050/MathematicalModelCategory>
+  a owl:Class ;
+  rdfs:label "MathematicalModelCategory" ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset>
+  a owl:Class ;
+  a sh:NodeShape ;
+  <http://pid.bayer.com/kos/19014/definition> "Any resource that contains instance data, e.g. CSV, database table, exposed view as well as RDF instances." ;
+  rdfs:comment "Any resource that contains instance data, e.g. CSV, database table, exposed view as well as RDF instances." ;
+  rdfs:label "Dataset"@en ;
+  rdfs:subClassOf <http://pid.bayer.com/kos/19014/Dataset> ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/444558> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-ContainsComplementaryInformation> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-containsLicensedData> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-isCopyOfDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-isDerivedFromDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-isPersonalData> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-isSubsetOfDataset> ;
+  sh:property <https://pid.bayer.com/kos/19050/NonRDFDataset-sameDatasetAs> ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-ContainsComplementaryInformation>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasComplementaryInformation> ;
+  sh:description "This dataset and the linked dataset contain complementary information about the instances that are common to both datasets." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Contains complementary information" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "4"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-containsLicensedData>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/containsLicensedData> ;
+  sh:datatype xsd:boolean ;
+  sh:group <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Licensed Data" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-isCopyOfDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/isCopyOfDataset> ;
+  sh:description "This property links a copy of a dataset with the original dataset. Copy in this context means a complete and identiical replication. This property is an asymmetric property, which means that is must point from the copy to the original." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Is Copy Of Dataset" ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-isDerivedFromDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/isDerivedFromDataset> ;
+  sh:description "This property links a dataset to the original dataset from which this one was derived, e.g. views. In contrast to the properties \"is subset of\" and \"is copy of\" the content of this dataset may have been somehow modified." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Is Derived From Dataset" ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-isPersonalData>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/isPersonalData> ;
+  sh:datatype xsd:boolean ;
+  sh:description "Please specify if this registered resource contains personal data (PII) in the sense of GDPR or similar." ;
+  sh:group <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Personal Data" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-isSubsetOfDataset>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/isSubsetOfDataset> ;
+  sh:description "This property links a dataset to another dataset from which this one was extracted from." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Is Subset Of Dataset" ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/NonRDFDataset-sameDatasetAs>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/sameDatasetAs> ;
+  sh:description "This property links two datasets with identical content." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Same Dataset As" ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/Open>
+  a <https://pid.bayer.com/kos/19050/InformationClassification> ;
+  rdfs:label "Public"@en ;
+.
+<https://pid.bayer.com/kos/19050/PIDEntry>
+  a owl:Class ;
+  rdfs:label "PIDEntry"@en ;
+  rdfs:subClassOf <http://pid.bayer.com/kos/19014/BrowsableResource> ;
+.
+<https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus>
+  a owl:Class ;
+  rdfs:comment "Status of the resource registration entry in COLID. Not to be mistaken with the status of the resource itself." ;
+  rdfs:label "PID Entry Lifecycle Status" ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/PIDURI>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Information about the PID URI"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Information about the PID URI"@en ;
+  rdfs:label "PIDURI"@en ;
+  sh:order "40"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:comment "This is the starting node for all content that is registered in COLID." ;
+  rdfs:label "COLID Entry"@en ;
+  rdfs:subClassOf <http://pid.bayer.com/kos/19014/DigitalResource> ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept--0> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept--1> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept--2> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-IsReplacedBy> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-SourceID> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-author> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-dateCreated> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-distribution> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasConsumerGroup> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasDataSteward> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasEntryLifecycleStatus> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasHistoricVersion> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasInformationClassification> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasLabel> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasLaterVersion> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasLifecycleStatus> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasPIDEditorialNote> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasResourceDefinition> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-hasVersion> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-lastChangeDateTime> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-lastChangeUser> ;
+  sh:property <https://pid.bayer.com/kos/19050/PID_Concept-type> ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept--0>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/646465> ;
+  sh:group <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Metadata Release Config" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "0"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept--1>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/546454> ;
+  sh:description "The person who requested the last change without editing the resource entry, e.g. setting a resource status to \"Mark for Deletion\"." ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Change Requester" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "30"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept--2>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/47119343> ;
+  sh:description "While COLID provides full keyword search capability, this field allows added functionality to freely categorize COLID entries along any property of interest that is not covered by another metadata field. Keywords/tags can be used to filter search results in the Marketplace for resources sharing the same category/property. Examples are project or product names, systems, or business area. It should be a combination of short keywords/tags instead of long, complex ones." ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:minCount 0 ;
+  sh:name "Keywords/Tags" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+  <https://pid.bayer.com/ns/shacl/fieldType> <https://pid.bayer.com/ns/shacl/fieldType#extendableList> ;
+.
+
+<https://pid.bayer.com/kos/19050/PID_Concept-IsReplacedBy>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/225896> ;
+  sh:description "The resource replaces another resource. This is distinct from a version link." ;
+  sh:group <http://pid.bayer.com/kos/19050/LinkTypes> ;
+  sh:name "Is replaced by" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-SourceID>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasSourceID> ;
+  sh:datatype xsd:string ;
+  sh:group <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Source ID" ;
+  sh:order "9"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-author>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/author> ;
+  rdfs:label "Author" ;
+  sh:datatype xsd:string ;
+  sh:description """The person who registered the resource in PID (e.g. identified by the email address).
+""" ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Author" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "40"^^xsd:decimal ;
+  sh:pattern "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" ;
+  <https://pid.bayer.com/ns/shacl/fieldType> <https://pid.bayer.com/ns/shacl/fieldType#string> ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-dateCreated>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/dateCreated> ;
+  rdfs:label "Date Created" ;
+  sh:datatype xsd:dateTime ;
+  sh:description "Creation date/time." ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Date Created" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "70"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-distribution>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/distribution> ;
+  <http://topbraid.org/tosh#editWidget> <http://topbraid.org/swa#NestedObjectEditor> ;
+  sh:class <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  sh:description "This property was derived from dcat:distribution and it links a PID Resource with its different distribution endpoints." ;
+  sh:group <http://pid.bayer.com/kos/19050/DistributionEndpoints> ;
+  sh:minCount 0 ;
+  sh:name "Distribution Endpoint" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasConsumerGroup>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasConsumerGroup> ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Consumer Group" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "60"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasDataSteward>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasDataSteward> ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/Quality> ;
+  sh:maxCount 100 ;
+  sh:minCount 0 ;
+  sh:name "Data Steward" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+  sh:pattern "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasEntryLifecycleStatus>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus> ;
+  sh:group <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Entry Lifecycle Status" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasHistoricVersion>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasHistoricVersion> ;
+  sh:group <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Historic Version" ;
+  sh:nodeKind sh:IRI ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasInformationClassification>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasInformationClassification> ;
+  sh:class <https://pid.bayer.com/kos/19050/InformationClassification> ;
+  sh:group <https://pid.bayer.com/kos/19050/SecurityAccess> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Information Classification"@en ;
+  sh:nodeKind sh:IRI ;
+  sh:order "4"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLabel>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasLabel> ;
+  sh:datatype xsd:string ;
+  sh:description "This is the label for this registered resource (e.g. title/name for dataset, mathematical models, etc.)." ;
+  sh:group <https://pid.bayer.com/kos/19050/PreferedLabel> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Label"@en ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLaterVersion>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasLaterVersion> ;
+  sh:group <http://pid.bayer.com/kos/19050/InvisibleTechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Later Version" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "8"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasLifecycleStatus>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasLifecycleStatus> ;
+  rdfs:label "Lifecycle Status" ;
+  sh:class <https://pid.bayer.com/kos/19050/LifeCycleStatus> ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Lifecycle Status" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "5"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasPIDEditorialNote>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasPIDEditorialNote> ;
+  rdfs:label "Editorial Note" ;
+  sh:datatype rdf:HTML ;
+  sh:description "Any notes that can be helpful for users of the resource. For example, can be change notes or application information." ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Editorial Note" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasResourceDefinition>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasResourceDefinition> ;
+  rdfs:label "Definition"@en ;
+  sh:datatype rdf:HTML ;
+  sh:description "A complete definition of the registered resource assures consumers who are not familiar with the resource get a clear understanding of what the resource represents. It contributes to a rich search experience because the content is full-text indexed." ;
+  sh:group <https://pid.bayer.com/kos/19050/Definition> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Definition"@de ;
+  sh:name "Definition"@en ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-hasVersion>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasVersion> ;
+  rdfs:label "has version" ;
+  sh:datatype xsd:string ;
+  sh:group <https://pid.bayer.com/kos/19050/UsageAndMaintenance> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Version" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "4"^^xsd:decimal ;
+  sh:pattern "^(\\d+\\.)*\\d+$" ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-lastChangeDateTime>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/lastChangeDateTime> ;
+  rdfs:label "Last change date and time" ;
+  sh:datatype xsd:dateTime ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Last Change Date and Time" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "60"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-lastChangeUser>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/lastChangeUser> ;
+  rdfs:label "Last Change User" ;
+  sh:datatype xsd:string ;
+  sh:description "This is the relation to the user who made the last change to the PID entry (e.g. identified by the email address)." ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Last Change User" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "20"^^xsd:decimal ;
+  sh:pattern "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concept-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Resource Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 50 ;
+.
+<https://pid.bayer.com/kos/19050/PID_Concepts>
+  a owl:Class ;
+  rdfs:label "PID Concepts"@en ;
+  rdfs:subClassOf owl:Thing ;
+.
+<https://pid.bayer.com/kos/19050/PidUriTemplate-hasPidUriTemplateIdType>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasPidUriTemplateIdType> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "ID Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/PidUriTemplate-hasPidUriTemplateSuffix>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasPidUriTemplateSuffix> ;
+  sh:class <https://pid.bayer.com/kos/19050#PidUriTemplateSuffix> ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:name "Suffix" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 4 ;
+.
+<https://pid.bayer.com/kos/19050/PidUriTemplate-hasRoute>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050#hasRoute> ;
+  sh:datatype xsd:string ;
+  sh:flags "i" ;
+  sh:group <https://pid.bayer.com/kos/19050/StandardGroup> ;
+  sh:maxCount 1 ;
+  sh:name "Route" ;
+  sh:nodeKind sh:Literal ;
+  sh:order "1"^^xsd:decimal ;
+  sh:pattern "^((?!.*(#|%23).*).)*$" ;
+.
+<https://pid.bayer.com/kos/19050/PidUriTemplate-type>
+  a sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group <https://pid.bayer.com/kos/19050/TechnicalInformation> ;
+  sh:minCount 1 ;
+  sh:name "Entity Type" ;
+  sh:nodeKind sh:IRI ;
+  sh:order 3 ;
+.
+<https://pid.bayer.com/kos/19050/PidUriTemplateLifecycleStatus>
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:label "Pid Uri Template Lifecycle Status" ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts> ;
+.
+<https://pid.bayer.com/kos/19050/PreferedLabel>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all preferred Information"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all preferred Information"@en ;
+  rdfs:label "Preferred Label"@en ;
+  sh:order "10"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/Quality>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all Information about Quality"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all Information about Quality"@en ;
+  rdfs:label "Quality"@en ;
+  sh:order "80"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/RDFDataset>
+  a owl:Class ;
+  a sh:NodeShape ;
+  <http://pid.bayer.com/kos/19014/definition> "Any resource that is based on W3C's RDF standard."@en ;
+  rdfs:comment "Any resource that is based on W3C's RDF standard." ;
+  rdfs:label "RDF Data"@en ;
+  rdfs:subClassOf <http://pid.bayer.com/kos/19014/Dataset> ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/444558> ;
+  sh:property <https://pid.bayer.com/kos/19050/RDFDataset-hasBaseURI> ;
+  sh:property <https://pid.bayer.com/kos/19050/RDFDataset-mainDistribution> ;
+.
+<https://pid.bayer.com/kos/19050/RDFDataset-hasBaseURI>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/hasBaseURI> ;
+  sh:group <https://pid.bayer.com/kos/19050/PIDURI> ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:name "Base Uri" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/RDFDataset-mainDistribution>
+  a sh:PropertyShape ;
+  sh:path <https://pid.bayer.com/kos/19050/mainDistribution> ;
+  sh:group <http://pid.bayer.com/kos/19050/DistributionEndpoints> ;
+  sh:maxCount 1 ;
+  sh:minCount 0 ;
+  sh:name "Main Distribution Endpoint" ;
+  sh:nodeKind sh:IRI ;
+  sh:order "2"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/RDFDatasetWithInstances>
+  a owl:Class ;
+  dash:abstract false ;
+  <http://pid.bayer.com/kos/19014/definition> "A dataset stored in a triplestore and / or in one of the RDF syntax notations like .ttl .rdf .n3 etc. Generally there is also an ontology that is instantiated by the RDF dataset. Therefore, this resources type appears under both categories \"RDF Data\" as well as \"Dataset\". " ;
+  rdfs:comment "A dataset stored in a triplestore and / or in one of the RDF syntax notations like .ttl .rdf .n3 etc. Generally there is also an ontology that is instantiated by the RDF dataset. Therefore, this resources type appears under both categories \"RDF Data\" as well as \"Dataset\". " ;
+  rdfs:label "RDF Dataset with Instances"@en ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:subClassOf <https://pid.bayer.com/kos/19050/RDFDataset> ;
+  <https://pid.bayer.com/kos/19050/435897> "https://dataservices-icons.s3.eu-central-1.amazonaws.com/https%253A%252F%252Fpid.bayer.com%252Fkos%252F19050%252FRDFDatasetWithInstances.svg" ;
+.
+<https://pid.bayer.com/kos/19050/Restricted>
+  a <https://pid.bayer.com/kos/19050/InformationClassification> ;
+  rdfs:label "Restricted"@en ;
+.
+<https://pid.bayer.com/kos/19050/Secret>
+  a <https://pid.bayer.com/kos/19050/InformationClassification> ;
+  rdfs:label "Secret"@en ;
+.
+<https://pid.bayer.com/kos/19050/SecurityAccess>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all Information for security and Access"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all Information for security and Access"@en ;
+  rdfs:comment "Grouping all Information for security and Access"@en ;
+  rdfs:label "Security And Access"@en ;
+  sh:order "70"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/StandardGroup>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all standard information" ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all standard information" ;
+  rdfs:comment "Grouping all standard information"@en ;
+  rdfs:label "Standard Group"@en ;
+  sh:order "50"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/TechnicalInformation>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all not editable technical Information"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all not editable technical Information"@en ;
+  rdfs:label "Technical Information"@en ;
+  sh:order "997"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/UsageAndMaintenance>
+  a sh:PropertyGroup ;
+  <http://topbraid.org/tosh#editGroupDescription> "Grouping all Information for Usage and Maintenance"@en ;
+  <http://topbraid.org/tosh#viewGroupDescription> "Grouping all Information for Usage and Maintenance"@en ;
+  rdfs:label "Usage and Maintenance"@en ;
+  sh:order "60"^^xsd:decimal ;
+.
+<https://pid.bayer.com/kos/19050/active>
+  a <https://pid.bayer.com/kos/19050/ConsumerGroupLifecycleStatus> ;
+  a <https://pid.bayer.com/kos/19050/DistributionEndpointLifecycleStatus> ;
+  a <https://pid.bayer.com/kos/19050/PidUriTemplateLifecycleStatus> ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "This status means that the template is active and can be used for the generation of new URI identifier." ;
+  rdfs:label "Active"@en ;
+.
+<https://pid.bayer.com/kos/19050/appliedToDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a mathematical model to a dataset that this model is applied to." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/MathematicalModel> ;
+  rdfs:label "applied to dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/author>
+  a owl:ObjectProperty ;
+  rdfs:comment "The person who registered the resource in PID (e.g. identified by the email address)." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "author" ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/containsLicensedData>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Please specify if this dataset contains licensed data." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "contains licensed data"@en ;
+  rdfs:range xsd:boolean ;
+.
+<https://pid.bayer.com/kos/19050/createdFromDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a mathematical model to the dataset that has been used to generate this model" ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/MathematicalModel> ;
+  rdfs:label "created from dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/dateCreated>
+  a owl:DatatypeProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "date created" ;
+  rdfs:range xsd:dateTime ;
+.
+<https://pid.bayer.com/kos/19050/deprecated>
+  a <https://pid.bayer.com/kos/19050/ConsumerGroupLifecycleStatus> ;
+  a <https://pid.bayer.com/kos/19050/DistributionEndpointLifecycleStatus> ;
+  a <https://pid.bayer.com/kos/19050/LifeCycleStatus> ;
+  a <https://pid.bayer.com/kos/19050/PidUriTemplateLifecycleStatus> ;
+  rdfs:label "Deprecated"@en ;
+.
+<https://pid.bayer.com/kos/19050/distribution>
+  a owl:ObjectProperty ;
+  <http://pid.bayer.com/kos/19014/wasDerivedFrom> "https://www.w3.org/ns/dcat#distribution" ;
+  rdfs:comment "This property was derived from dcat:distribution and it links a PID Resource with its different distribution endpoints." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "distribution"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+.
+<https://pid.bayer.com/kos/19050/draft>
+  a <https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus> ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "The status of the pid entry is draft." ;
+  rdfs:label "Draft"@en ;
+.
+<https://pid.bayer.com/kos/19050/hasAdGroups>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Add the active directory information e.g ad-bayer-cnb that dat aconsumers must be a member of."^^rdf:HTML ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/QueryEndpoint> ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/DataLakeEndpoint> ;
+  rdfs:label "has AD groups"@en ;
+.
+<https://pid.bayer.com/kos/19050/hasAmazonResourceName>
+  a owl:DatatypeProperty ;
+  rdfs:comment """<div>
+<div>Amazon&nbsp;Resource&nbsp;Name&nbsp;of&nbsp;the&nbsp;S3</div>
+</div>""" ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/DataLakeEndpoint> ;
+  rdfs:label "has amazon resource name"@en ;
+.
+<https://pid.bayer.com/kos/19050/hasBaseURI>
+  a owl:ObjectProperty ;
+  rdfs:comment "Any RDF based ontology needs to have a base URI which is used to create the URIs for the different concepts, properties and instances. The base URI of the PID application ontology is https://pid.bayer.com/kos/19050/" ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/RDFDataset> ;
+  rdfs:label "has base URI"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+.
+<https://pid.bayer.com/kos/19050/hasComplementaryInformation>
+  a owl:ObjectProperty ;
+  rdfs:comment "This dataset and the linked dataset contain complementary information about the instances that are common to both datasets." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "has complementary Information" ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson>
+  a owl:ObjectProperty ;
+  rdfs:comment "The contact person for this consumer group." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+  rdfs:label "Contact Person" ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/hasConsumerGroupLifecycleStatus>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+  rdfs:label "Consumer Group Lifecycle Status" ;
+  rdfs:range <https://pid.bayer.com/kos/19050/ConsumerGroupLifecycleStatus> ;
+.
+<https://pid.bayer.com/kos/19050/hasContactPerson>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property relates an instance of a network resource to the contact person for this instance." ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  rdfs:label "has contact person"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/hasDataSourceType>
+  a rdf:Property ;
+  rdfs:comment "How to get technical access"@en ;
+  rdfs:label "has Data Source Type" ;
+.
+<https://pid.bayer.com/kos/19050/hasDataSteward>
+  a owl:ObjectProperty ;
+  rdfs:comment "E-Mail address of the person who is the caretaker for this resource. May also be a mail group. Will be selected from IAM, search by first or family or group name. In Climate, this is the Dataset Custodian who has specific accountability and responsibility for data within the dataset."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has data steward"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/hasDefaultPidUriTemplate>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup> ;
+  rdfs:label "Default Pid Uri Template" ;
+  rdfs:range <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+.
+<https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus>
+  a owl:ObjectProperty ;
+  rdfs:comment "With this information data consumer to assess the lifecycle status of this Distribution Endpoint. It is preferred to set Distribution Endpoints that have been active for a while to the status \"deprecated\" instead of deleting them."^^rdf:HTML ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  rdfs:label "has distribution endpoint lifecycle status"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/DistributionEndpointLifecycleStatus> ;
+.
+<https://pid.bayer.com/kos/19050/hasDraft>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PIDEntry> ;
+  rdfs:label "has draft"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PIDEntry> ;
+.
+<https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "hasEntryLifecycleStatus"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus> ;
+.
+<https://pid.bayer.com/kos/19050/hasHistoricVersion>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has historic version"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/hasInformationClassification>
+  a owl:ObjectProperty ;
+  rdfs:comment "Bayer Information Classification levels as they apply to the registered Information. \"Public\" has been added for resources available to the public domain."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has information classification"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/InformationClassification> ;
+.
+<https://pid.bayer.com/kos/19050/hasInternalLifecycle>
+  a owl:ObjectProperty ;
+  rdfs:comment "The attributes describes the current state of the lifecycle of an application." ;
+  rdfs:label "Internal Lifecycle"@en ;
+.
+<https://pid.bayer.com/kos/19050/hasJupyterHubConnection>
+  a owl:DatatypeProperty ;
+  rdfs:comment """<div>
+<div>Connection&nbsp;string</div>
+</div>""" ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/DataLakeEndpoint> ;
+  rdfs:label "has jupyter hub connection" ;
+.
+<https://pid.bayer.com/kos/19050/hasLabel>
+  a owl:DatatypeProperty ;
+  rdfs:comment "This is the label for this registered resource (e.g. title/name for dataset, mathematical models, etc.)."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has label"@en ;
+  rdfs:subPropertyOf skos:prefLabel ;
+.
+<https://pid.bayer.com/kos/19050/hasLaterVersion>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has later version"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept> ;
+.
+<https://pid.bayer.com/kos/19050/hasLifecycleStatus>
+  a owl:ObjectProperty ;
+  rdfs:comment "The lifecycle status of a registered resource helps the data consumer to assess its usability."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has lifecycle status"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/LifeCycleStatus> ;
+.
+<https://pid.bayer.com/kos/19050/hasMathematicalModelCategory>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a resource that is a mathematical model with a mathematical model category." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/MathematicalModel> ;
+  rdfs:label "hasMathematicalModelCategory"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/MathematicalModelCategory> ;
+.
+<https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Thoroughly describe the endpoint"^^rdf:HTML ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  rdfs:label "hasNetworkedResourceLabel"@en ;
+  rdfs:range rdf:HTML ;
+  rdfs:subPropertyOf skos:prefLabel ;
+.
+<https://pid.bayer.com/kos/19050/hasPIDEditorialNote>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Any notes that can be helpful for users of the resource. For example, can be change notes or application information." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has PID editorial note"@en ;
+  rdfs:range rdf:HTML ;
+  rdfs:subPropertyOf <http://pid.bayer.com/kos/19014/editorialNote> ;
+  rdfs:subPropertyOf skos:editorialNote ;
+.
+<https://pid.bayer.com/kos/19050/hasPIDURITemplateLifecycleStatus>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a PID URI template with a lifecycle status (e.g. active, deleted)" ;
+  rdfs:domain <https://pid.bayer.com/kos/19050#PidUriTemplate> ;
+  rdfs:label "Pid Uri Template Lifecycle Status"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/PidUriTemplateLifecycleStatus> ;
+.
+
+
+<https://pid.bayer.com/kos/19050/hasResourceDefinition>
+  a owl:DatatypeProperty ;
+  rdfs:comment "A complete definition of the registered resource assures consumers who are not familiar with the resource get a clear understanding of what the resource represents. It contributes to a rich search experience because the content is full-text indexed."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has resource definition"@en ;
+  rdfs:range rdf:HTML ;
+.
+<https://pid.bayer.com/kos/19050/hasSourceID>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has Source ID" ;
+  rdfs:range rdf:HTML ;
+.
+
+<https://pid.bayer.com/kos/19050/hasURITemplate>
+  a owl:ObjectProperty ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+  rdfs:label "hasURITemplate"@en ;
+.
+
+<https://pid.bayer.com/kos/19050/hasVersion>
+  a owl:DatatypeProperty ;
+  rdfs:comment "This is the version of the resource that has been registered in PID." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "has version"@en ;
+  rdfs:range xsd:float ;
+.
+<https://pid.bayer.com/kos/19050/historic>
+  a <https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus> ;
+  rdfs:label "Historic"@en ;
+.
+<https://pid.bayer.com/kos/19050/includesOntology>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links an ontology to the included ontology." ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/Ontology> ;
+  rdfs:label "includes ontology"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Ontology> ;
+.
+<https://pid.bayer.com/kos/19050/isCopyOfDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a copy of a dataset with the original dataset. Copy in this context means a complete and identiical replication. This property is an asymmetric property, which means that is must point from the copy to the original." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "is copy of dataset"@en ;
+  rdfs:label "ist eine Kopie von"@de ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/isDerivedFromDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a dataset to the original dataset from which this one was derived, e.g. views. In contrast to the properties \"is subset of\" and \"is copy of\" the content of this dataset may have been somehow modified." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "is derived from dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/isPersonalData>
+  a owl:DatatypeProperty ;
+  rdfs:comment "Please specify if this registered resource contains personal data (PII) in the sense of GDPR or similar."^^rdf:HTML ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "beinhaltet personenbezogene Daten"@de ;
+  rdfs:label "contains personal data"@en ;
+  rdfs:range xsd:boolean ;
+.
+<https://pid.bayer.com/kos/19050/isSchemaOfDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links an ontology to the dataset which populates the ontology. E.g. the PID application ontology is the schema of the dataset of the PID application, which is stored in the triplestore of the PID application backend." ;
+  rdfs:domain <http://pid.bayer.com/kos/19014/Ontology> ;
+  rdfs:label "is schema of dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/isSubsetOfDataset>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links a dataset to another dataset from which this one was extracted from." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "is subset of dataset"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/lastChangeDateTime>
+  a owl:DatatypeProperty ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "last change date time"@en ;
+  rdfs:range xsd:dateTime ;
+.
+<https://pid.bayer.com/kos/19050/lastChangeUser>
+  a owl:ObjectProperty ;
+  rdfs:comment "This is the relation to the user who made the last change to the PID entry (e.g. identified by the email address)." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/PID_Concept> ;
+  rdfs:label "last change user"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/Person> ;
+.
+<https://pid.bayer.com/kos/19050/linkedToRdfData>
+  a owl:ObjectProperty ;
+  rdfs:label "Linked to RDF Data"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/RDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/mainDistribution>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property connects an instance of the concept ontology with the distribution endpoint to which the base uri has to resolve to." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/RDFDataset> ;
+  rdfs:label "main distribution"@en ;
+  rdfs:range <http://pid.bayer.com/kos/19014/NetworkedResource> ;
+  rdfs:subPropertyOf <https://pid.bayer.com/kos/19050/distribution> ;
+.
+<https://pid.bayer.com/kos/19050/markedForDeletion>
+  a <https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus> ;
+  rdfs:label "Marked for deletion"@en ;
+.
+<https://pid.bayer.com/kos/19050/published>
+  a <https://pid.bayer.com/kos/19050/PIDEntryLifecycleStatus> ;
+  <http://pid.bayer.com/kos/19014/editorialNote> "The status of the pid entry is published." ;
+  rdfs:label "Published"@en ;
+.
+<https://pid.bayer.com/kos/19050/released>
+  a <https://pid.bayer.com/kos/19050/LifeCycleStatus> ;
+  rdfs:label "Released"@en ;
+.
+<https://pid.bayer.com/kos/19050/sameDatasetAs>
+  a owl:ObjectProperty ;
+  rdfs:comment "This property links two datasets with identical content." ;
+  rdfs:domain <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+  rdfs:label "same dataset as"@en ;
+  rdfs:range <https://pid.bayer.com/kos/19050/NonRDFDataset> ;
+.
+<https://pid.bayer.com/kos/19050/taxonomies#Empty>
+  a <https://pid.bayer.com/kos/19050#PidUriTemplateSuffix> ;
+.
+<https://pid.bayer.com/kos/19050/taxonomies#Guid>
+  a <https://pid.bayer.com/kos/19050#PidUriTemplateIdType> ;
+  rdfs:label "GUID"@en ;
+.
+<https://pid.bayer.com/kos/19050/taxonomies#Number>
+  a <https://pid.bayer.com/kos/19050#PidUriTemplateIdType> ;
+  rdfs:label "Number"@en ;
+.
+<https://pid.bayer.com/kos/19050/taxonomies#Slash>
+  a <https://pid.bayer.com/kos/19050#PidUriTemplateSuffix> ;
+  rdfs:label "/"@en ;
+.
+<https://pid.bayer.com/kos/19050/underDevelopment>
+  a <https://pid.bayer.com/kos/19050/LifeCycleStatus> ;
+  rdfs:label "Under Development"@en ;
+.
+<https://pid.bayer.com/ns/shacl/instanceGraph>
+  a rdf:Property ;
+  rdfs:comment "A constraint component that can be used to define the instance graph graph to store the instances of classes."@en ;
+  rdfs:isDefinedBy <https://pid.bayer.com/ns/shacl> ;
+  rdfs:label "Instance Graph"@en ;
+.
+<https://pid.bayer.com/kos/19050/>
+  a owl:Ontology ;
+  dc:title "PID Application Ontology" ;
+  metadata:identifier "https://pid.bayer.com/e8fa556b-5da0-46bf-8763-4a68dc905f2b/" ;
+  metadata:isEnterprise true ;
+  metadata:maintainedBy <urn:x-tb-governance:Bayer> ;
+  metadata:officialName "PID Ontology 12" ;
+  metadata:purpose "define and describe COLID metadata"@en ;
+  metadata:status metadata:UnderDevelopmentStatus ;
+  metadata:version "12" ;
+  <http://topbraid.org/swa#defaultNamespace> "https://pid.bayer.com/kos/19050/" ;
+  teamwork:rootClass owl:Thing ;
+  <http://www.bayerLF.com/schema/SCHEMA_ontology#bayerGraphURI> "https://pid.bayer.com/kos/19050/" ;
+  rdfs:comment "This is the application specific ontology for the COLID application. It is based on the Enterprise Core Ontology." ;
+  rdfs:label "PID Ontology 12 Open Source" ;
+  owl:imports <http://datashapes.org/graphql> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://topbraid.org/teamworkconstraints> ;
+  owl:imports <http://datashapes.org/dash> ;
+.
+daaa__enterprise_core_ontology_1_0:
+    metadata:version           "1" ;
+    swa:defaultNamespace       "http://pid.bayer.com/pido/" ;
+    owl:imports                <http://spinrdf.org/spl> ;
+    metadata:identifier        "PIDO" ;
+    <http://www.bayerLF.com/schema/SCHEMA_ontology#bayerGraphURI>  "http://pid.bayer.com/kos/19014/" ;
+    teamwork:newInstancesConstructMethod  "uuid" ;
+    rdf:type                   owl:Ontology ;
+    rdfs:label                 "CORE Ontology for COLID open source publication - DEV" ;
+    teamwork:rootClass         owl:Thing ;
+    teamwork:externalGraphURI  <https://pid.bayer.com/kos/19050/> ;
+    owl:imports                <http://datashapes.org/dash> ;
+    <http://purl.org/dc/elements/1.1/title>  "Enterprise Core Ontology" ;
+    <http://purl.org/dc/elements/1.1/title>  "PID Application Ontology" ;
+    teamwork:newInstancesClassPrefix  "name" ;
+    <http://www.bayerLF.com/schema/SCHEMA_ontology#bayerGraphURI>  "https://pid.bayer.com/kos/19050/" ;
+    owl:imports                <http://datashapes.org/graphql> ;
+    metadata:status            metadata:UnderDevelopmentStatus ;
+    teamwork:newInstancesUserCannotModifyURI  false ;
+    rdfs:comment               "This is the Enterprise Core Ontology for the COLID application." 
+.

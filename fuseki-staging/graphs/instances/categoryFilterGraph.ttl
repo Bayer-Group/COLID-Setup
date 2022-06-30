@@ -1,0 +1,11 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://pid.bayer.com/kos/19050#c5026270-eba8-4b4b-a687-cc8de01d1d30>
+<http://www.w3.org/2000/01/rdf-schema#comment>
+"string" ;
+<http://www.w3.org/2000/01/rdf-schema#label>
+"RDF Category Filter" ;
+<https://pid.bayer.com/hasResourceTypes>
+"Ontology" ;
+<https://pid.bayer.com/kos/19050/lastChangeUser>
+"cihan.bogay.ext@bayer.com" .

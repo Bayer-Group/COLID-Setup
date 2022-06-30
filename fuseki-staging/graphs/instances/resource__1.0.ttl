@@ -1,0 +1,74 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://pid.bayer.com/rnd/0000001>
+        a       <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+        <https://pid.bayer.com/kos/19050/hasUriTemplate>
+                <https://pid.bayer.com/kos/19050#641bd936-e413-41db-a0b4-5691d2a78925> .
+
+<https://pid.bayer.com/rnd/0000002>
+        a       <http://pid.bayer.com/kos/19014/PermanentIdentifier> ;
+        <https://pid.bayer.com/kos/19050/hasUriTemplate>
+                <https://pid.bayer.com/kos/19050#641bd936-e413-41db-a0b4-5691d2a78925> .
+
+<http://localhost:3030/colid-dataset/sh>
+        <http://localhost:3030/colid-dataset/ph>
+                <http://localhost:3030/colid-dataset/oh> .
+
+<https://pid.bayer.com/kos/19050#d8ce3654-776e-422a-a7a2-c4e420f65aba>
+        a       <https://pid.bayer.com/kos/19050/GenericDataset> ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/rnd/0000001> ;
+        <https://pid.bayer.com/kos/19050#hasConsumerGroup>
+                <https://pid.bayer.com/kos/19050#2b3f0380-dd22-4666-a28b-7f1eeb82a5ff> ;
+        <https://pid.bayer.com/kos/19050/47119343>
+                <https://pid.bayer.com/kos/19050#ea2e6672-13dc-4698-b2b5-780638a47f86> ;
+        <https://pid.bayer.com/kos/19050/646465>
+                <https://pid.bayer.com/kos/19050#0cf33a012-868e-44f9-8f8a-0cd9a716a340> ;
+        <https://pid.bayer.com/kos/19050/author>
+                "superadmin@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/containsLicensedData>
+                false ;
+        <https://pid.bayer.com/kos/19050/dateCreated>
+                "2022-06-30T12:06:35.524Z"^^xsd:dateTime ;
+        <https://pid.bayer.com/kos/19050/distribution>
+                <https://pid.bayer.com/kos/19050#391bb5e0-eb62-1a2c-b83b-f892f3980947> ;
+        <https://pid.bayer.com/kos/19050/hasDataSteward>
+                "Peter.Russell.HEUDN@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/published> ;
+        <https://pid.bayer.com/kos/19050/hasInformationClassification>
+                <https://pid.bayer.com/kos/19050/Open> ;
+        <https://pid.bayer.com/kos/19050/hasLabel>
+                "Sample Test Dataset" ;
+        <https://pid.bayer.com/kos/19050/hasLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/underDevelopment> ;
+        <https://pid.bayer.com/kos/19050/hasPIDEditorialNote>
+                "<p>Noting down information for my dataset</p>"^^rdf:HTML ;
+        <https://pid.bayer.com/kos/19050/hasResourceDefinition>
+                "<p>Sample Test Dataset Definition</p>"^^rdf:HTML ;
+        <https://pid.bayer.com/kos/19050/hasRevision>
+                "https://pid.bayer.com/kos/19050#d8ce3654-776e-422a-a7a2-c4e420f65abaRev1" ;
+        <https://pid.bayer.com/kos/19050/hasVersion>
+                "1" ;
+        <https://pid.bayer.com/kos/19050/isPersonalData>
+                false ;
+        <https://pid.bayer.com/kos/19050/lastChangeDateTime>
+                "2022-06-30T12:08:07.758Z"^^xsd:dateTime ;
+        <https://pid.bayer.com/kos/19050/lastChangeUser>
+                "superadmin@bayer.com" .
+
+<https://pid.bayer.com/kos/19050#391bb5e0-eb62-1a2c-b83b-f892f3980947>
+        a       <http://pid.bayer.com/kos/19014/BrowsableResource> ;
+        <http://pid.bayer.com/kos/19014/hasNetworkAddress>
+                "https://www.wikipedia.org/"^^xsd:anyURI ;
+        <http://pid.bayer.com/kos/19014/hasPID>
+                <https://pid.bayer.com/rnd/0000002> ;
+        <https://pid.bayer.com/kos/19050/hasContactPerson>
+                "Peter.Russell.HEUDN@bayer.com" ;
+        <https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus>
+                <https://pid.bayer.com/kos/19050/active> ;
+        <https://pid.bayer.com/kos/19050/hasNetworkedResourceLabel>
+                "<p>Link to Wikipedia</p>"^^rdf:HTML .

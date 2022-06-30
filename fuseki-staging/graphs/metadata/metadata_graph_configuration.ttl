@@ -3,15 +3,19 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://pid.bayer.com/kos/19050#cf33a012-868e-44f9-8f8a-0cd9a716a340> a <https://pid.bayer.com/kos/19050/367403> ;
-	<http://pid.bayer.com/kos/19014/editorialNote> "Added first metadata graph configuration." ;
-	<http://pid.bayer.com/kos/19014/startTime> "2020-01-01T00:00:00.000Z"^^xsd:dateTime ;
-	<https://pid.bayer.com/kos/19050/813245> <https://pid.bayer.com/pid_enterprise_core_ontology/1.0> ;
-	<https://pid.bayer.com/kos/19050/841236> <https://pid.bayer.com/extended_uri_template/1.0> ;
-	<https://pid.bayer.com/kos/19050/844122> <https://pid.bayer.com/resource/historic> ;
-	<https://pid.bayer.com/kos/19050/846513> <https://pid.bayer.com/consumergroup/1.0> ;
-	<https://pid.bayer.com/kos/19050/852147> <https://pid.bayer.com/resource/4.0> ;
-	<https://pid.bayer.com/kos/19050/852910> <https://pid.bayer.com/pid_ontology_oss/shacled/5.0> ;
-	<https://pid.bayer.com/kos/19050/875123> <https://pid.bayer.com/pid_ontology_oss/5> , <https://pid.bayer.com/pid_ontology_oss/technical/5.0> , <https://pid.bayer.com/pid/mathematical_model_categories_taxonomy/1.0> ;
-	<https://pid.bayer.com/kos/19050/891201> <https://pid.bayer.com/pid_uri_template/1.0> ;
-	<https://pid.bayer.com/kos/19050/895123> <https://pid.bayer.com/keyword/1.0> .
+<https://pid.bayer.com/kos/19050#cf33a012-868e-44f9-8f8a-0cd9a716a340> 
+                          <http://pid.bayer.com/kos/19014/editorialNote> "Added first metadata graph configuration."^^rdf:HTML;
+                          <http://pid.bayer.com/kos/19014/startTime> "2022-06-22T11:32:27.471Z"^^xsd:dateTime;
+                          a <https://pid.bayer.com/kos/19050/367403>;
+                          <https://pid.bayer.com/kos/19050/841236> <https://pid.bayer.com/extendeduritemplate/1.0>;
+                          <https://pid.bayer.com/kos/19050/844122> <https://pid.bayer.com/resource/historic>;
+                          <https://pid.bayer.com/kos/19050/846513> <https://pid.bayer.com/consumergroup/1.2>;
+                          <https://pid.bayer.com/kos/19050/852147> <https://pid.bayer.com/resource/1.0>;
+                          <https://pid.bayer.com/kos/19050/852148> <https://pid.bayer.com/resource/1.0/Draft>;
+                          <https://pid.bayer.com/kos/19050/852149> <https://pid.bayer.com/linkhistory>;
+                          <https://pid.bayer.com/kos/19050/852150> <https://pid.bayer.com/categoryFilterGraph>;
+                          <https://pid.bayer.com/kos/19050/875123> <https://pid.bayer.com/pid_enterprise_core_ontology/1.0>,
+                                                                  <https://pid.bayer.com/pid/metadata/mathematical_model_categories_taxonomy/1.0>,
+                                                                  <https://pid.bayer.com/pid_ontology/12/OpenSource>;
+                          <https://pid.bayer.com/kos/19050/891201> <https://pid.bayer.com/piduritemplate/1.0>;
+                          <https://pid.bayer.com/kos/19050/895123> <https://pid.bayer.com/keywords/1.0>.
