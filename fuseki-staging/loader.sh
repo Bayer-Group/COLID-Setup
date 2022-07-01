@@ -27,7 +27,7 @@ Start uploading instance data graphs.
 #####################################"
 ./tdbloader --graph https://pid.bayer.com/consumergroup/1.2         --loc /fuseki/databases/colid-dataset /staging/graphs/instances/consumergroup__1.2.ttl 
 ./tdbloader --graph https://pid.bayer.com/piduritemplate/1.0      --loc /fuseki/databases/colid-dataset /staging/graphs/instances/pid_uri_template__1.0.ttl
-./tdbloader --graph https://pid.bayer.com/extended_uri_template/1.0 --loc /fuseki/databases/colid-dataset /staging/graphs/instances/extended_uri_template__1.0.ttl
+./tdbloader --graph https://pid.bayer.com/extendeduritemplate/1.0 --loc /fuseki/databases/colid-dataset /staging/graphs/instances/extended_uri_template__1.0.ttl
 ./tdbloader --graph https://pid.bayer.com/keywords/1.0               --loc /fuseki/databases/colid-dataset /staging/graphs/instances/keyword__1.0.ttl
 ./tdbloader --graph https://pid.bayer.com/resource/1.0              --loc /fuseki/databases/colid-dataset /staging/graphs/instances/resource__1.0.ttl
 ./tdbloader --graph https://pid.bayer.com/resource/1.0/Draft         --loc /fuseki/databases/colid-dataset /staging/graphs/instances/resource__1.0__Draft.ttl

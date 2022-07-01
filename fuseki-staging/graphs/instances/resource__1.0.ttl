@@ -26,7 +26,7 @@
         <https://pid.bayer.com/kos/19050/47119343>
                 <https://pid.bayer.com/kos/19050#ea2e6672-13dc-4698-b2b5-780638a47f86> ;
         <https://pid.bayer.com/kos/19050/646465>
-                <https://pid.bayer.com/kos/19050#0cf33a012-868e-44f9-8f8a-0cd9a716a340> ;
+                <https://pid.bayer.com/kos/19050#cf33a012-868e-44f9-8f8a-0cd9a716a340> ;
         <https://pid.bayer.com/kos/19050/author>
                 "superadmin@bayer.com" ;
         <https://pid.bayer.com/kos/19050/containsLicensedData>
