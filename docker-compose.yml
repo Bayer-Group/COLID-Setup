@@ -301,6 +301,7 @@ services:
       sh -c "
         echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' > /docker-entrypoint-initdb.d/init.sql;
         echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
         /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
       "
     ports:
@@ -349,34 +350,83 @@ services:
 # # KGE Backend
 # ###################################################################################################
 
-#   kge-web-service:
-#     build:
-#       context: ./kge-Web-service
-#       dockerfile: Dockerfile
-#     command: npm start
-#     container_name: kge-web-service
-#     ports:
-#       - "8080:9090"
-#     volumes:
-#       - .:/usr/app/
-#       - /usr/app/node_modules
-#     networks:
-#       - backend
+  kge-web-service:
+    build:
+      context: ./kge-Web-service
+      dockerfile: Dockerfile
+    command: npm start
+    container_name: kge-web-service
+    ports:
+      - "8080:9090"
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    networks:
+      - backend
 # ###################################################################################################
 # # KGE Editor frontend
 # ###################################################################################################
-#   kge-editor-frontend:
-#     container_name: kge-editor-frontend
-#     build:
-#       context: ./KGE-Frontend
-#       dockerfile: Dockerfile
-#       args:
-#         ANGULAR_ENVIRONMENT: docker
-#         NODE_OPTIONS: "--max-old-space-size=4096"
-#     ports:
-#       - 4400:8080
-#     networks:
-#       - frontend
+  
+  kge-editor-frontend:
+    container_name: kge-editor-frontend
+    build:
+      context: ./KGE-Frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4400:8080
+    networks:
+      - frontend
+
+###################################################################################################
+# COLID RRM API
+###################################################################################################
+  colid-resource-relationship-manager-service:
+    container_name: colid-resource-relationship-manager-service
+    build:
+      context: ./COLID-ResourceRelationshipManager-Backend
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z mysql 3306;
+          do
+            echo Waiting for MySQL startup;
+            sleep 3;
+          done;
+          echo MySQL is ready;
+          /usr/bin/dotnet COLID.ResourceRelationshipManager.WebApi.dll"
+    depends_on:
+      # - colid-registration-service
+      - mysql
+      # - colid-search-service
+    ports:
+      - 51830:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - Database__User=${RELATIONAL_DATABASE_USERNAME}
+      - Database__Password=${RELATIONAL_DATABASE_PASSWORD}
+    networks:
+      - backend
+
+###################################################################################################
+# COLID RRM frontend
+###################################################################################################
+  colid-resource-relationship-manager-frontend:
+    container_name: colid-resource-relationship-manager-frontend
+    build:
+      context: ./COLID-ResourceRelationshipManager-Frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4305:8080
+    depends_on:
+      - colid-resource-relationship-manager-service
+    networks:
+      - frontend
 
 volumes:
   esdata:

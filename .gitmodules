@@ -36,3 +36,9 @@
 [submodule "KGE-Frontend"]
 	path = KGE-Frontend
 	url = https://github.com/Bayer-Group/KGE-Frontend.git
+[submodule "COLID-ResourceRelationshipManager-Frontend"]
+	path = COLID-ResourceRelationshipManager-Frontend
+	url = https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Frontend.git
+[submodule "COLID-ResourceRelationshipManager-Backend"]
+	path = COLID-ResourceRelationshipManager-Backend
+	url = https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Backend.git
