@@ -65,6 +65,8 @@ This repository helps settings up a local environment based on Docker Compose.
 | RabbitMQ Webinterface                                    | http://localhost:15672/         | -                               | guest    | guest    |
 | KGE-Editor-Frontend                         | http://localhost:4400/ | http://localhost:4400/| -        | -        |
 | KGE-Web-Service                         | http://localhost:8080/ | http://localhost:8080/| -        | -        |
+| Resource Relationship Manager-Service         | http://localhost:51830/ | http://localhost:51831/| -        | -        |
+| Resource Relationship Manager-Frontend                          | http://localhost:4305/ | http://localhost:4305/| -        | -        |
 ## Quick Tips
 
 Some quick tips and advices to work faster.
