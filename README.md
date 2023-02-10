@@ -105,6 +105,26 @@ docker container rm $(docker container ls -aq)
         ]
     }
     ```
+## App-wide customization for URL Domain (Optional)
+On the Semantic Web, URIs identify not just Web documents, but also real-world objects like people and cars, and even abstract ideas and non-existing things like a mythical unicorn. We call these real-world objects or things.
+COLID uses the native *bayer.com* as default domain in each of its URI as the project was conceived for Bayer Ag. For example - https://pid.bayer.com/kos/19050/hasLabel
+
+However you can also configure the custom domain in the URI if needed. In order to do that before building the docker containers, all the triples in the triplestore as well as the references to the URIs should be updated to use the custom domain. 
+Multiple files references across the projects need to be changed from *bayer.com* to any custom specific domain - https://pid.orange.com/kos/19050/hasLabel
+Details are mentioned below.<br>
+| **File** 	| **Project** 	| **Variable** 	| **Comments** 	|
+|---	|---	|---	|---	|
+| [loader.sh](https://github.com/Bayer-Group/COLID-Setup/blob/master/fuseki-staging/loader.sh) 	| fuseki-staging 	| baseUrl 	| change baseUrl (example.com) as per your need in the shellscript before uploading triples 	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-AppData-Service/blob/54499e78b79a8e3e73155e5cc06f1d84b6970d1a/src/COLID.AppDataService.WebApi/appsettings.json) 	| AppData Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-Indexing-Crawler-Service/blob/974fc06f644c2526377252ee1d34430afe51dbaa/COLID.IndexingCrawlerService.WebApi/appsettings.json) 	| Indexing Crawler Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-Registration-Service/blob/3d33924b836b1d96453deeb622414513a3eaf664/src/COLID.RegistrationService.WebApi/appsettings.json) 	| Registration Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-Reporting-Service/blob/f21d73f6b6c28b2d5762fa196141c237e267c6f7/src/COLID.ReportingService.WebApi/appsettings.json) 	| Reporting Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-Search-Service/blob/4403a9c442f9d0b7d5db895513fd3286d4b63a6e/COLID.SearchService.WebApi/appsettings.json) 	| Search Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-Scheduler-Service/blob/1ccff502deff6925a9a90a26966de41597311496/src/COLID.Scheduler.Web/appsettings.json) 	| Scheduler Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [appsettings.json](https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Backend/blob/a8d590c0f87aeb9179619165ad3c9d634285f566/src/COLID.ResourceRelationshipManager/appsettings.json) 	| Resource Relationship Manager Backend Service 	| ServiceUrl,<br> HttpServiceUrl 	| change both variables as per your custom domain. <br> "ServiceUrl": "https://pid.example.com/",<br> "HttpServiceUrl": "http://pid.example.com/"	|
+| [environment.ts](https://github.com/Bayer-Group/COLID-Editor-Frontend/blob/2ffad4bf96d8dc683ddc05ebebdc0ab4b1bf0b13/src/environments/environment.ts), [environment.docker.ts](https://github.com/Bayer-Group/COLID-Editor-Frontend/blob/2ffad4bf96d8dc683ddc05ebebdc0ab4b1bf0b13/src/environments/environment.docker.ts) 	| Editor Frontend | baseUrl, PidUriTemplate.baseUrl	| change baseUrl (example.com) in both sections as per your custom domain 	|
+| [environment.ts](https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend/blob/f2ee9f3a66c13a7063b1fc78e7592d77b6314c61/src/environments/environment.ts), [environment.docker.ts](https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend/blob/f2ee9f3a66c13a7063b1fc78e7592d77b6314c61/src/environments/environment.docker.ts) 	| Data Marketplace Frontend | baseUrl	| change baseUrl (example.com) as per your custom domain 	|
+| [environment.ts](https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Frontend/blob/master/projects/frontend/src/environments/environment.ts), [environment.docker.ts](https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Frontend/blob/master/projects/frontend/src/environments/environment.docker.ts) 	| Resource Relationship Manager Frontend | baseUrl	| change baseUrl (example.com) as per your custom domain 	|
 
 ### Links
 
