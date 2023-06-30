@@ -299,9 +299,9 @@ services:
       MYSQL_PASSWORD: ${RELATIONAL_DATABASE_PASSWORD}
     entrypoint: >
       sh -c "
-        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' > /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' > /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
         /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
       "
     ports:
