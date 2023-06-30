@@ -1,0 +1,132 @@
+@base <http://fuseki:3030/colid-dataset/query>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix metadata: <http://topbraid.org/metadata#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix tosh: <http://topbraid.org/tosh#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix pid: <https://pid.bayer.com/kos/19050#>.
+@prefix pid2: <http://pid.bayer.com/kos/19014/>.
+@prefix teamwork: <http://topbraid.org/teamwork#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix colid_filter_group_data_graph: <http://pid.bayer.com/colid_fIlter_group_data_graph#>.
+@prefix pid3: <https://pid.bayer.com/kos/19050/>.
+
+
+colid_filter_group_data_graph:Mixed a pid3:FilterGroup;
+                                    rdfs:label "Mixed";
+                                    pid3:GroupOrder 2 ;
+                                    pid3:GroupProperty colid_filter_group_data_graph:Property230,
+                                                       colid_filter_group_data_graph:Property220,
+                                                       colid_filter_group_data_graph:Property210,
+                                                       colid_filter_group_data_graph:Property200.
+colid_filter_group_data_graph:Primary a pid3:FilterGroup;
+                                      rdfs:label "Primary";
+                                      pid3:GroupOrder 1 ;
+                                      pid3:GroupProperty colid_filter_group_data_graph:Property10,
+                                                         colid_filter_group_data_graph:Property40,
+                                                         colid_filter_group_data_graph:Property150,
+                                                         colid_filter_group_data_graph:Property100,
+                                                         colid_filter_group_data_graph:Property50,
+                                                         colid_filter_group_data_graph:Property130,
+                                                         colid_filter_group_data_graph:Property80,
+                                                         colid_filter_group_data_graph:Property20,
+                                                         colid_filter_group_data_graph:Property70,
+                                                         colid_filter_group_data_graph:Property90,
+                                                         colid_filter_group_data_graph:Property110,
+                                                         colid_filter_group_data_graph:Property30,
+                                                         colid_filter_group_data_graph:Property60,
+                                                         colid_filter_group_data_graph:Property140,
+                                                         colid_filter_group_data_graph:Property120.
+colid_filter_group_data_graph:MathematicalModelType a pid3:FilterGroup;
+                                                    rdfs:label "Mathematical Model Type";
+                                                    pid3:GroupOrder 3 ;
+                                                    pid3:GroupProperty colid_filter_group_data_graph:Property300.
+colid_filter_group_data_graph:Property300 a pid3:FilterProperty;
+                                           rdfs:label "Property300";
+                                           pid3:PropertyOrder 300 ;
+                                           pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasMathematicalModelCategory"^^xsd:anyURI.													
+colid_filter_group_data_graph:Property10 a pid3:FilterProperty;
+                                         rdfs:label "Property10";
+                                         pid3:PropertyOrder 10 ;
+                                         pid3:PropertyUrl "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"^^xsd:anyURI.
+colid_filter_group_data_graph:Property100 a pid3:FilterProperty;
+                                          rdfs:label "Property100";
+                                          pid3:PropertyOrder 100 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasLastReviewer"^^xsd:anyURI.
+colid_filter_group_data_graph:Property110 a pid3:FilterProperty;
+                                          rdfs:label "Property110";
+                                          pid3:PropertyOrder 110 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/lastChangeUser"^^xsd:anyURI.
+colid_filter_group_data_graph:Property120 a pid3:FilterProperty;
+                                          rdfs:label "Property120";
+                                          pid3:PropertyOrder 120 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasAttachment"^^xsd:anyURI.
+colid_filter_group_data_graph:Property130 a pid3:FilterProperty;
+                                          rdfs:label "Property130";
+                                          pid3:PropertyOrder 130 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasHistoricVersion"^^xsd:anyURI.
+colid_filter_group_data_graph:Property140 a pid3:FilterProperty;
+                                          rdfs:label "Property140";
+                                          pid3:PropertyOrder 140 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasVersion"^^xsd:anyURI.
+colid_filter_group_data_graph:Property150 a pid3:FilterProperty;
+                                          rdfs:label "Property150";
+                                          pid3:PropertyOrder 150 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasInformationClassification"^^xsd:anyURI.
+colid_filter_group_data_graph:Property20 a pid3:FilterProperty;
+                                         rdfs:label "Property20";
+                                         pid3:PropertyOrder 20 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/47119343"^^xsd:anyURI.
+colid_filter_group_data_graph:Property200 a pid3:FilterProperty;
+                                          rdfs:label "Property200";
+                                          pid3:PropertyOrder 200 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasDistributionEndpointLifecycleStatus"^^xsd:anyURI.
+colid_filter_group_data_graph:Property210 a pid3:FilterProperty;
+                                          rdfs:label "Property210";
+                                          pid3:PropertyOrder 210 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/isPersonalData"^^xsd:anyURI.
+colid_filter_group_data_graph:Property220 a pid3:FilterProperty;
+                                          rdfs:label "Property220";
+                                          pid3:PropertyOrder 220 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/containsLicensedData"^^xsd:anyURI.
+colid_filter_group_data_graph:Property230 a pid3:FilterProperty;
+                                          rdfs:label "Property230";
+                                          pid3:PropertyOrder 230 ;
+                                          pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasDataCategory"^^xsd:anyURI.
+colid_filter_group_data_graph:Property30 a pid3:FilterProperty;
+                                         rdfs:label "Property30";
+                                         pid3:PropertyOrder 30 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050#hasConsumerGroup"^^xsd:anyURI.
+colid_filter_group_data_graph:Property40 a pid3:FilterProperty;
+                                         rdfs:label "Property40";
+                                         pid3:PropertyOrder 40 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasLifecycleStatus"^^xsd:anyURI.
+colid_filter_group_data_graph:Property50 a pid3:FilterProperty;
+                                         rdfs:label "Property50";
+                                         pid3:PropertyOrder 50 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/lastChangeUser"^^xsd:anyURI.
+colid_filter_group_data_graph:Property60 a pid3:FilterProperty;
+                                         rdfs:label "Property60";
+                                         pid3:PropertyOrder 60 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasDataSteward"^^xsd:anyURI.
+colid_filter_group_data_graph:Property70 a pid3:FilterProperty;
+                                         rdfs:label "Property70";
+                                         pid3:PropertyOrder 70 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/author"^^xsd:anyURI.
+colid_filter_group_data_graph:Property80 a pid3:FilterProperty;
+                                         rdfs:label "Property80";
+                                         pid3:PropertyOrder 80 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/546454"^^xsd:anyURI.
+colid_filter_group_data_graph:Property90 a pid3:FilterProperty;
+                                         rdfs:label "Property90";
+                                         pid3:PropertyOrder 90 ;
+                                         pid3:PropertyUrl "https://pid.bayer.com/kos/19050/hasEntryLifecycleStatus"^^xsd:anyURI.
+
+<urn:x-evn-master:colid_filter_group_data_graph> metadata:status metadata:UnderDevelopmentStatus;
+                                                 <http://topbraid.org/swa#defaultNamespace> "http://pid.bayer.com/colid_fIlter_group_data_graph#";
+                                                 a owl:Ontology;
+                                                 rdfs:label "Colid FIlter Group Data Graph";
+                                                 owl:imports <urn:x-evn-master:pid_ontology_for_filtergroup>.

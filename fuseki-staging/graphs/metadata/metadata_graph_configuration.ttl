@@ -17,5 +17,6 @@
                           <https://pid.bayer.com/kos/19050/875123> <https://pid.bayer.com/pid_enterprise_core_ontology/1.0>,
                                                                   <https://pid.bayer.com/pid/metadata/mathematical_model_categories_taxonomy/1.0>,
                                                                   <https://pid.bayer.com/pid_ontology/12/OpenSource>;
+						  <https://pid.bayer.com/kos/19050/852810> <https://pid.bayer.com/colid_filter_group_data_graph>;									  
                           <https://pid.bayer.com/kos/19050/891201> <https://pid.bayer.com/piduritemplate/1.0>;
                           <https://pid.bayer.com/kos/19050/895123> <https://pid.bayer.com/keywords/1.0>.
