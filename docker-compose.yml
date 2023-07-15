@@ -353,7 +353,7 @@ services:
 
   kge-web-service:
     build:
-      context: ./kge-Web-service
+      context: ./KGE-Web-service
       dockerfile: Dockerfile
     command: npm start
     container_name: kge-web-service
