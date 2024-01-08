@@ -1,0 +1,9 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://www.w3.org/2004/02/skos/core#prefLabel> <http://www.w3.org/2000/01/rdf-schema#label> "Prefered Label".
+<http://pid.bayer.com/kos/k0000001/e0002396> <http://www.w3.org/2000/01/rdf-schema#label> "Has Dependent Territory".
+<http://www.w3.org/2004/02/skos/core#definition> <http://www.w3.org/2000/01/rdf-schema#label> "Definition".
+<http://pid.bayer.com/dinos/ontologies/Studies_Metadata_Ontology#hasMedicalUnitCode> <http://www.w3.org/2000/01/rdf-schema#label> "Medical Unit Code".

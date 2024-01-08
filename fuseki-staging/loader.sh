@@ -29,7 +29,7 @@ echo "Start uploading metadata graphs.
 ./tdbloader --graph https://pid.${baseUrl}/pid/metadata/mathematical_model_categories_taxonomy/1.0 --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/pid__metadata__mathematical_model_categories_taxonomy__1.0.ttl
 ./tdbloader --graph https://pid.${baseUrl}/kge/triplestores                               --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestores.ttl
 ./tdbloader --graph https://pid.${baseUrl}/kge/triplestoreSystems                         --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestoreSystems.ttl
-
+./tdbloader --graph https://pid.${baseUrl}/entity_labels                                  --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/entity_labels.ttl
 
 
 

@@ -21,8 +21,9 @@ services:
       - colid-appdata-service
       - fuseki
       - rabbitmq
-      - elasticsearch
+      - opensearch
       - redis
+      - minio
     ports:
       - 51770:8080
     environment:
@@ -58,7 +59,7 @@ services:
     depends_on:
       - fuseki
       - rabbitmq
-      - elasticsearch
+      - opensearch
       - redis
     ports:
       - 51780:8080
@@ -126,7 +127,7 @@ services:
           /usr/bin/dotnet COLID.SearchService.WebApi.dll"
     depends_on:
       - rabbitmq
-      - elasticsearch
+      - opensearch
       - redis
     ports:
       - 51800:8080
@@ -189,7 +190,7 @@ services:
           /usr/bin/dotnet COLID.Scheduler.Web.dll"
     depends_on:
       - colid-appdata-service
-      - elasticsearch
+      - opensearch
       - mysql
     ports:
       - 51820:8080
@@ -241,6 +242,54 @@ services:
       - frontend
 
 ###################################################################################################
+# COLID RRM API
+###################################################################################################
+  colid-resource-relationship-manager-service:
+    container_name: colid-resource-relationship-manager-service
+    build:
+      context: ./COLID-ResourceRelationshipManager-Backend
+      dockerfile: Dockerfile
+    entrypoint: /bin/sh
+    command: >
+      -c "while ! nc -z mysql 3306;
+          do
+            echo Waiting for MySQL startup;
+            sleep 3;
+          done;
+          echo MySQL is ready;
+          /usr/bin/dotnet COLID.ResourceRelationshipManager.WebApi.dll"
+    depends_on:
+      - colid-registration-service
+      - mysql
+      - colid-search-service
+    ports:
+      - 51830:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - Database__User=${RELATIONAL_DATABASE_USERNAME}
+      - Database__Password=${RELATIONAL_DATABASE_PASSWORD}
+    networks:
+      - backend
+
+###################################################################################################
+# COLID RRM frontend
+###################################################################################################
+  colid-resource-relationship-manager-frontend:
+    container_name: colid-resource-relationship-manager-frontend
+    build:
+      context: ./COLID-ResourceRelationshipManager-Frontend
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_ENVIRONMENT: docker
+        NODE_OPTIONS: "--max-old-space-size=4096"
+    ports:
+      - 4400:8080
+    depends_on:
+      - colid-resource-relationship-manager-service
+    networks:
+      - frontend
+      
+###################################################################################################
 # RabbitMQ Message Queue
 ###################################################################################################
   rabbitmq:
@@ -256,7 +305,37 @@ services:
       - 15672:15672
     networks:
       - backend
-
+# # ###################################################################################################
+# # # KGE Backend
+# # ###################################################################################################
+#   kge-web-service:
+#     build:
+#       context: ./kge-Web-service
+#       dockerfile: Dockerfile
+#     command: npm start
+#     container_name: kge-web-service
+#     ports:
+#       - "8080:9090"
+#     volumes:
+#       - .:/usr/app/
+#       - /usr/app/node_modules
+#     networks:
+#       - backend
+# # ###################################################################################################
+# # # KGE Editor frontend
+# # ###################################################################################################
+#   kge-editor-frontend:
+#     container_name: kge-editor-frontend
+#     build:
+#       context: ./KGE-Frontend
+#       dockerfile: Dockerfile
+#       args:
+#         ANGULAR_ENVIRONMENT: docker
+#         NODE_OPTIONS: "--max-old-space-size=4096"
+#     ports:
+#       - 4400:8080
+#     networks:
+#       - frontend
 ###################################################################################################
 # Redis Cache
 ###################################################################################################
@@ -299,9 +378,9 @@ services:
       MYSQL_PASSWORD: ${RELATIONAL_DATABASE_PASSWORD}
     entrypoint: >
       sh -c "
-        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' > /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' > /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
         /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
       "
     ports:
@@ -313,126 +392,158 @@ services:
 # Elasticsearch
 # Setup from https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
 ###################################################################################################
-  elasticsearch:
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
-    environment:
-      - cluster.name=docker-cluster
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - indices.query.bool.max_clause_count=3000
-    volumes:
-      - esdata:/usr/share/elasticsearch/data
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    ports:
-      - 9200:9200
-      - 9300:9300
-    networks:
-      - backend
+  # elasticsearch:
+  #   container_name: elasticsearch
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+  #   environment:
+  #     - cluster.name=docker-cluster
+  #     - discovery.type=single-node
+  #     - bootstrap.memory_lock=true
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #     - indices.query.bool.max_clause_count=3000
+  #   volumes:
+  #     - esdata:/usr/share/elasticsearch/data
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   ports:
+  #     - 9200:9200
+  #     - 9300:9300
+  #   networks:
+  #     - backend
 
 ###################################################################################################
 # Kibana
 # Setup from https://www.elastic.co/guide/en/kibana/6.8/docker.html
 ###################################################################################################
-  kibana:
-    container_name: kibana
-    image: docker.elastic.co/kibana/kibana:7.4.2
-    depends_on:
-      - elasticsearch
-    ports:
-      - 5601:5601
-    networks:
-      - backend
-# ###################################################################################################
-# # KGE Backend
-# ###################################################################################################
-
-  kge-web-service:
-    build:
-      context: ./kge-Web-service
-      dockerfile: Dockerfile
-    command: npm start
-    container_name: kge-web-service
-    ports:
-      - "8080:9090"
-    volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
-    networks:
-      - backend
-# ###################################################################################################
-# # KGE Editor frontend
-# ###################################################################################################
-  
-  kge-editor-frontend:
-    container_name: kge-editor-frontend
-    build:
-      context: ./KGE-Frontend
-      dockerfile: Dockerfile
-      args:
-        ANGULAR_ENVIRONMENT: docker
-        NODE_OPTIONS: "--max-old-space-size=4096"
-    ports:
-      - 4400:8080
-    networks:
-      - frontend
-
+  # kibana:
+  #   container_name: kibana
+  #   image: docker.elastic.co/kibana/kibana:7.4.2
+  #   depends_on:
+  #     - elasticsearch
+  #   ports:
+  #     - 5601:5601
+  #   networks:
+  #     - backend
+# Opensearch
+# Setup from https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/
 ###################################################################################################
-# COLID RRM API
-###################################################################################################
-  colid-resource-relationship-manager-service:
-    container_name: colid-resource-relationship-manager-service
-    build:
-      context: ./COLID-ResourceRelationshipManager-Backend
-      dockerfile: Dockerfile
-    entrypoint: /bin/sh
-    command: >
-      -c "while ! nc -z mysql 3306;
-          do
-            echo Waiting for MySQL startup;
-            sleep 3;
-          done;
-          echo MySQL is ready;
-          /usr/bin/dotnet COLID.ResourceRelationshipManager.WebApi.dll"
-    depends_on:
-      # - colid-registration-service
-      - mysql
-      # - colid-search-service
-    ports:
-      - 51830:8080
+  opensearch:
+    container_name: opensearch
+    image: opensearchproject/opensearch:2.8.0
     environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
-      - Database__User=${RELATIONAL_DATABASE_USERNAME}
-      - Database__Password=${RELATIONAL_DATABASE_PASSWORD}
+      #- cluster.name=opensearch-cluster # Name the cluster
+      - discovery.type=single-node
+      - indices.query.bool.max_clause_count=3000000
+      - plugins.security.disabled=true
+      #- node.name=opensearch-node # Name the node that will run in this container
+      #- discovery.seed_hosts=opensearch-node # Nodes to look for when discovering the cluster
+      #- cluster.initial_cluster_manager_nodes=opensearch-node # Nodes eligible to serve as cluster manager
+      - bootstrap.memory_lock=true # Disable JVM heap memory swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
+      #- "DISABLE_INSTALL_DEMO_CONFIG=true" # disables execution of install_demo_configuration.sh bundled with security plugin, which installs demo certificates and security configurations to OpenSearch      
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 262144 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 262144
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
+    ports:
+      - 9200:9200 # REST API
+      - 9600:9600 # Performance Analyzer
+    networks:
+      - backend
+      
+  
+ ###################################################################################################
+# Opensearch Dashboard
+# Setup from https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/
+###################################################################################################
+  opensearch-dashboards:
+    container_name: opensearch-dashboards
+    image: opensearchproject/opensearch-dashboards:2.8.0
+    depends_on:
+      - opensearch
+    ports:
+      - 5601:5601 # Map host port 5602 to container port 5602
+    expose:
+      - "5601" # Expose port 5602 for web access to OpenSearch Dashboards
+    environment:
+      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
+    networks:
+      - backend
+###################################################################################################
+# MinIO S3 Service
+###################################################################################################
+  minio: 
+    image: minio/minio:RELEASE.2020-11-06T23-17-07Z
+    container_name: minio
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+    command: server /data
+    volumes:
+      - miniodata:/data
+    networks:
+      - backend
+    ports:
+      - 9000:9000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+      
+  colid-api-carrot2-service:
+      container_name: colid-api-carrot2-service
+      build:
+        context: ./COLID-Carrot2-Service
+        dockerfile: Dockerfile
+      volumes:
+        - ./carrot2:/var/local/Config/
+      ports:
+        - 7000:8080
+      networks:
+        - backend
+        
+  minio-mc:
+    image: minio/mc:latest
+    container_name: minio-mc
+    depends_on:
+     - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host rm local;
+      /usr/bin/mc config host add --quiet --api s3v4 local http://minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
+      /usr/bin/mc rb --force local/${MINIO_BUCKET_NAME}/;
+      /usr/bin/mc mb --quiet local/${MINIO_BUCKET_NAME}/;
+      /usr/bin/mc policy set public local/${MINIO_BUCKET_NAME};
+      "
     networks:
       - backend
 
-###################################################################################################
-# COLID RRM frontend
-###################################################################################################
-  colid-resource-relationship-manager-frontend:
-    container_name: colid-resource-relationship-manager-frontend
-    build:
-      context: ./COLID-ResourceRelationshipManager-Frontend
-      dockerfile: Dockerfile
-      args:
-        ANGULAR_ENVIRONMENT: docker
-        NODE_OPTIONS: "--max-old-space-size=4096"
+  dynamodblocal:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
     ports:
-      - 4305:8080
-    depends_on:
-      - colid-resource-relationship-manager-service
+      - "8000:8000"
     networks:
-      - frontend
-
+      - backend
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
 volumes:
   esdata:
     driver: local
   mysqldata: {}
+  miniodata: {}
+  opensearch-data:
 
 networks:
   frontend:

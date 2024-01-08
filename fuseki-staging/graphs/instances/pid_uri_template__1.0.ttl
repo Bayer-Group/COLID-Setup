@@ -49,3 +49,17 @@
 	<https://pid.bayer.com/kos/19050/hasPidUriTemplateLifecycleStatus> <https://pid.bayer.com/kos/19050/active> ;
 	<https://pid.bayer.com/kos/19050#hasPidUriTemplateSuffix> <https://pid.bayer.com/kos/19050/taxonomies#Empty> ;
 	<https://pid.bayer.com/kos/19050#hasRoute> "sales/" .
+
+<https://pid.bayer.com/kos/19050#3f3247b7-63e7-4401-b3e2-1600ff19407b> a <https://pid.bayer.com/kos/19050#PidUriTemplate>;
+                                                                       <https://pid.bayer.com/kos/19050#hasBaseUrl> "https://pid.bayer.com/";
+                                                                       <https://pid.bayer.com/kos/19050#hasIdLength> "0";
+                                                                       <https://pid.bayer.com/kos/19050#hasPidUriTemplateIdType> <https://pid.bayer.com/kos/19050/taxonomies#Guid>;
+                                                                       <https://pid.bayer.com/kos/19050#hasRoute> "query/";
+																	   <https://pid.bayer.com/kos/19050/hasPidUriTemplateLifecycleStatus> <https://pid.bayer.com/kos/19050/active>.
+
+<https://pid.bayer.com/kos/19050#f4d571f7-1788-46cc-bd21-5ad51829d700> a <https://pid.bayer.com/kos/19050#PidUriTemplate>;
+                                                                       <https://pid.bayer.com/kos/19050#hasBaseUrl> "https://pid.bayer.com/";
+                                                                       <https://pid.bayer.com/kos/19050#hasIdLength> "0";
+                                                                       <https://pid.bayer.com/kos/19050#hasPidUriTemplateIdType> <https://pid.bayer.com/kos/19050/taxonomies#Guid>;
+                                                                       <https://pid.bayer.com/kos/19050#hasRoute> "maps/";
+                                                                       <https://pid.bayer.com/kos/19050/hasPidUriTemplateLifecycleStatus> <https://pid.bayer.com/kos/19050/active>.

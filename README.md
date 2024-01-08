@@ -66,7 +66,8 @@ This repository helps settings up a local environment based on Docker Compose.
 | KGE-Editor-Frontend                         | http://localhost:4400/ | http://localhost:4400/| -        | -        |
 | KGE-Web-Service                         | http://localhost:8080/ | http://localhost:8080/| -        | -        |
 | Resource Relationship Manager-Service         | http://localhost:51830/ | http://localhost:51831/| -        | -        |
-| Resource Relationship Manager-Frontend                          | http://localhost:4305/ | http://localhost:4305/| -        | -        |
+| Resource Relationship Manager-Frontend                          | http://localhost:7000/ | http://localhost:7000/| -        | -        |
+| COLID API Carrot2 Service                        | http://localhost:4305/ | http://localhost:4305/| -        | -        |
 ## Quick Tips
 
 Some quick tips and advices to work faster.
@@ -83,7 +84,7 @@ To remove all containers:
 docker container rm $(docker container ls -aq)
 ```
 
-### Elasticsearch & Kibana
+### Opensearch & Kibana
 
 - After starting the first time, some indices and aliases need to be created
 - Open http://localhost:5601, go to the Dev Tools in the left panel, enter and run the following commands
@@ -126,9 +127,14 @@ Details are mentioned below.<br>
 | [environment.ts](https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend/blob/f2ee9f3a66c13a7063b1fc78e7592d77b6314c61/src/environments/environment.ts), [environment.docker.ts](https://github.com/Bayer-Group/COLID-Data-Marketplace-Frontend/blob/f2ee9f3a66c13a7063b1fc78e7592d77b6314c61/src/environments/environment.docker.ts) 	| Data Marketplace Frontend | baseUrl	| change baseUrl (example.com) as per your custom domain 	|
 | [environment.ts](https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Frontend/blob/master/projects/frontend/src/environments/environment.ts), [environment.docker.ts](https://github.com/Bayer-Group/COLID-ResourceRelationshipManager-Frontend/blob/master/projects/frontend/src/environments/environment.docker.ts) 	| Resource Relationship Manager Frontend | baseUrl	| change baseUrl (example.com) as per your custom domain 	|
 
+### COLID: Carrot2 clustering service
+Carrot2 clustering service is an opensource for clustering text. It can automatically discover groups of related documents and label them with short key terms or phrases. Please publish few resources in your local COLID Setup and then you can view the clusters in the Data Marketplace.
+Refer link below for more details
+
 ### Links
 
 - [Git Submodules](https://www.vogella.com/tutorials/GitSubmodules/article.html)
 - [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - [Apache Jena Fuseki tdbloader example](https://www.csee.umbc.edu/courses/graduate/691/spring14/01/examples/jena/README.txt)
 - [wait-for-it Script](https://github.com/vishnubob/wait-for-it)
+- [Carrot2](https://github.com/carrot2/carrot2)
