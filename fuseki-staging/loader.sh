@@ -46,4 +46,4 @@ Start uploading instance data graphs.
 ./tdbloader --graph https://pid.${baseUrl}/linkhistory               --loc /fuseki/databases/colid-dataset /staging/graphs/instances/linkhistory.ttl
 ./tdbloader --graph https://pid.${baseUrl}/categoryFilterGraph       --loc /fuseki/databases/colid-dataset /staging/graphs/instances/categoryFilterGraph.ttl
 ./tdbloader --graph https://pid.${baseUrl}/kos/19050#d8ce3654-776e-422a-a7a2-c4e420f65abaRev1_added       --loc /fuseki/databases/colid-dataset /staging/graphs/instances/first_resource_revision_graph.ttl
-./tdbloader --graph https://pid.${baseUrl}/colid_filter_group_data_graph     --loc /fuseki/databases/colid-dataset /staging/graphs/instances/colid_filter_group_data_graph.ttl
+./tdbloader --graph https://pid.${baseUrl}/colid_filter_group_data_graph     --loc /fuseki/databases/colid-dataset /staging/graphs/instances/colid_fIlter_group_data_graph.ttl
