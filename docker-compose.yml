@@ -371,7 +371,7 @@ services:
     container_name: mysql
     image: mysql:5.7
     volumes:
-      - mysqldata:/var/lib/mysql
+      - ./mysqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${RELATIONAL_DATABASE_ROOT_PASSWORD}
       MYSQL_USER: ${RELATIONAL_DATABASE_USERNAME}
@@ -402,7 +402,7 @@ services:
   #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   #     - indices.query.bool.max_clause_count=3000
   #   volumes:
-  #     - esdata:/usr/share/elasticsearch/data
+  #     - ./esdata:/usr/share/elasticsearch/data
   #   ulimits:
   #     memlock:
   #       soft: -1
@@ -451,7 +451,7 @@ services:
         soft: 262144 # Maximum number of open files for the opensearch user - set to at least 65536
         hard: 262144
     volumes:
-      - opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
+      - ./opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
     ports:
       - 9200:9200 # REST API
       - 9600:9600 # Performance Analyzer
@@ -488,7 +488,7 @@ services:
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
     command: server /data
     volumes:
-      - miniodata:/data
+      - ./miniodata:/data
     networks:
       - backend
     ports:
