@@ -28,8 +28,10 @@ services:
       - 51770:8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-      - AWS_ACCESS_KEY_ID=""
-      - AWS_SECRET_ACCESS_KEY=""
+      - AmazonWebServicesOptions__AccessKeyId=${MINIO_ACCESS_KEY}
+      - AmazonWebServicesOptions__SecretAccessKey=${MINIO_SECRET_KEY}
+      - AmazonWebServicesOptions__S3BucketForFiles=${MINIO_BUCKET_NAME}
+      - AmazonWebServicesOptions__S3BucketForGraphs=${MINIO_BUCKET_NAME}
       - AWS_SESSION_TOKEN=""
       - ColidMessageQueueOptions__Username=${MESSAGEQUEUE_USERNAME}
       - ColidMessageQueueOptions__Password=${MESSAGEQUEUE_PASSWORD}
@@ -473,8 +475,8 @@ services:
     expose:
       - "5601" # Expose port 5602 for web access to OpenSearch Dashboards
     environment:
-      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
-      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
+      - 'OPENSEARCH_HOSTS=["https://opensearch:9200"]'
+      # - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
     networks:
       - backend
 ###################################################################################################
@@ -492,7 +494,7 @@ services:
     networks:
       - backend
     ports:
-      - 9000:9000
+      - 9001:9000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
@@ -519,7 +521,7 @@ services:
     entrypoint: >
       /bin/sh -c "
       /usr/bin/mc config host rm local;
-      /usr/bin/mc config host add --quiet --api s3v4 local http://minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
+      /usr/bin/mc config host add --quiet --api s3v4 local http://minio:9001 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
       /usr/bin/mc rb --force local/${MINIO_BUCKET_NAME}/;
       /usr/bin/mc mb --quiet local/${MINIO_BUCKET_NAME}/;
       /usr/bin/mc policy set public local/${MINIO_BUCKET_NAME};
