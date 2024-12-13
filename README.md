@@ -29,6 +29,9 @@ This repository helps settings up a local environment based on Docker Compose.
     RELATIONAL_DATABASE_ROOT_PASSWORD=dbadminpass
     RELATIONAL_DATABASE_USERNAME=dbuser
     RELATIONAL_DATABASE_PASSWORD=dbpass
+    MINIO_ACCESS_KEY=minio
+    MINIO_SECRET_KEY=minio123
+    MINIO_BUCKET_NAME=colid-files
     SMTP_USERNAME=any
     SMTP_PASSWORD=any
     ```

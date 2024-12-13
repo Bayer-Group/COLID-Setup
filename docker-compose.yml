@@ -373,16 +373,21 @@ services:
     container_name: mysql
     image: mysql:5.7
     volumes:
-      - ./mysqldata:/var/lib/mysql
+      - mysqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${RELATIONAL_DATABASE_ROOT_PASSWORD}
       MYSQL_USER: ${RELATIONAL_DATABASE_USERNAME}
       MYSQL_PASSWORD: ${RELATIONAL_DATABASE_PASSWORD}
     entrypoint: >
       sh -c "
-        echo 'CREATE DATABASE IF NOT EXISTS colid_appdata; GRANT ALL PRIVILEGES ON colid_appdata.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' > /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_scheduler; GRANT ALL PRIVILEGES ON colid_scheduler.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
-        echo 'CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager; GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '\''${RELATIONAL_DATABASE_USERNAME}'\''@'\''%'\''; ' >> /docker-entrypoint-initdb.d/init.sql;
+        echo \"
+        CREATE DATABASE IF NOT EXISTS colid_appdata;
+        GRANT ALL PRIVILEGES ON colid_appdata.* TO '${RELATIONAL_DATABASE_USERNAME}'@'%';
+        CREATE DATABASE IF NOT EXISTS colid_scheduler;
+        GRANT ALL PRIVILEGES ON colid_scheduler.* TO '${RELATIONAL_DATABASE_USERNAME}'@'%';
+        CREATE DATABASE IF NOT EXISTS colid_resourcerelationshipmanager;
+        GRANT ALL PRIVILEGES ON colid_resourcerelationshipmanager.* TO '${RELATIONAL_DATABASE_USERNAME}'@'%';
+        \" > /docker-entrypoint-initdb.d/initialize.sql;
         /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
       "
     ports:
@@ -444,7 +449,7 @@ services:
       #- cluster.initial_cluster_manager_nodes=opensearch-node # Nodes eligible to serve as cluster manager
       - bootstrap.memory_lock=true # Disable JVM heap memory swapping
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
-      #- "DISABLE_INSTALL_DEMO_CONFIG=true" # disables execution of install_demo_configuration.sh bundled with security plugin, which installs demo certificates and security configurations to OpenSearch      
+      - "DISABLE_INSTALL_DEMO_CONFIG=true" # disables execution of install_demo_configuration.sh bundled with security plugin, which installs demo certificates and security configurations to OpenSearch      
     ulimits:
       memlock:
         soft: -1 # Set memlock to unlimited (no soft or hard limit)
@@ -453,7 +458,7 @@ services:
         soft: 262144 # Maximum number of open files for the opensearch user - set to at least 65536
         hard: 262144
     volumes:
-      - ./opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
+      - opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
     ports:
       - 9200:9200 # REST API
       - 9600:9600 # Performance Analyzer
@@ -475,8 +480,8 @@ services:
     expose:
       - "5601" # Expose port 5602 for web access to OpenSearch Dashboards
     environment:
-      - 'OPENSEARCH_HOSTS=["https://opensearch:9200"]'
-      # - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
+      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
     networks:
       - backend
 ###################################################################################################
@@ -490,7 +495,7 @@ services:
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
     command: server /data
     volumes:
-      - ./miniodata:/data
+      - miniodata:/data
     networks:
       - backend
     ports:
