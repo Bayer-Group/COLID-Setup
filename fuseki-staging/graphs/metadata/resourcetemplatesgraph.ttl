@@ -1,0 +1,5 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://pid.bayer.com/kos/19050#1d186224-0e61-4d65-a44d-c6bb054fdbf2> a <https://pid.bayer.com/kos/19050#dummy>.

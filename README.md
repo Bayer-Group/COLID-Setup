@@ -134,6 +134,14 @@ Details are mentioned below.<br>
 Carrot2 clustering service is an opensource for clustering text. It can automatically discover groups of related documents and label them with short key terms or phrases. Please publish few resources in your local COLID Setup and then you can view the clusters in the Data Marketplace.
 Refer link below for more details
 
+### Minio and S3
+The repository contains a local S3 bucket image for minio. If you want to use certain features such as 
+exporting and importing excel. Please follow below steps
+ - Make sure minio image is running
+ - Browse to http://localhost:9001
+ - Create Bucket 'colid-files'
+ - Now you can use the Export and Import functionalities in Data Marketplace
+
 ### Links
 
 - [Git Submodules](https://www.vogella.com/tutorials/GitSubmodules/article.html)

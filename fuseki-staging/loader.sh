@@ -30,7 +30,7 @@ echo "Start uploading metadata graphs.
 ./tdbloader --graph https://pid.${baseUrl}/kge/triplestores                               --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestores.ttl
 ./tdbloader --graph https://pid.${baseUrl}/kge/triplestoreSystems                         --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/triplestoreSystems.ttl
 ./tdbloader --graph https://pid.${baseUrl}/entity_labels                                  --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/entity_labels.ttl
-
+./tdbloader --graph https://pid.${baseUrl}/resourcetemplatesgraph                         --loc /fuseki/databases/colid-dataset /staging/graphs/metadata/resourcetemplatesgraph.ttl
 
 
 echo "#####################################

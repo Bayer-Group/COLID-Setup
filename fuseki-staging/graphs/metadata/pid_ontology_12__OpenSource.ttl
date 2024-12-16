@@ -384,7 +384,43 @@ owl:Thing
   sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-hasPidUriTemplate> ;
   sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-name> ;
   sh:property <https://pid.bayer.com/kos/19050/ConsumerGroup-type> ;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-ResourceTemplates>;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-DefaultReviewCyclePolicy>;
+  sh:property <https://pid.bayer.com/kos/19050#ConsumerGroup-DefaultDeprecationTime(InDays)>;
 .
+<https://pid.bayer.com/kos/19050#ConsumerGroup-DefaultReviewCyclePolicy> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                                         <http://www.w3.org/ns/shacl#datatype> xsd:string;
+                                                                         <http://www.w3.org/ns/shacl#description> "Describes the default value of review cycle process value (in months) for the consumer group.";
+                                                                         <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/StandardGroup>;
+                                                                         <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                                         <http://www.w3.org/ns/shacl#minCount> 0 ;
+                                                                         <http://www.w3.org/ns/shacl#name> "Default Review Cycle Policy (In Months)";
+                                                                         <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal>;
+                                                                         <http://www.w3.org/ns/shacl#order> 51.0;
+                                                                         <http://www.w3.org/ns/shacl#path> <https://pid.bayer.com/kos/19050/hasDefaultReviewCyclePolicy>;
+                                                                         <http://www.w3.org/ns/shacl#pattern> "\\D|([1-9]|[1-9][0-9]|[1-9][0-9][0-9])".
+
+<https://pid.bayer.com/kos/19050/hasDefaultReviewCyclePolicy> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                              rdfs:comment "Describes the default value of review cycle process value (in months) for the consumer group.";
+                                                              rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup>;
+                                                              rdfs:label "has default review cycle policy".
+
+
+<https://pid.bayer.com/kos/19050#ConsumerGroup-DefaultDeprecationTime(InDays)> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                                               <http://www.w3.org/ns/shacl#datatype> xsd:integer;
+                                                                               <http://www.w3.org/ns/shacl#description> "Number of days past review cycle due date to set resource as deprecated.";
+                                                                               <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/StandardGroup>;
+                                                                               <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                                               <http://www.w3.org/ns/shacl#minCount> 0 ;
+                                                                               <http://www.w3.org/ns/shacl#name> "Deprecation Time (In Days)";
+                                                                               <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal>;
+                                                                               <http://www.w3.org/ns/shacl#order> 53.0;
+                                                                               <http://www.w3.org/ns/shacl#path> <https://pid.bayer.com/kos/19050/hasDefaultDeprecationTime>.
+<https://pid.bayer.com/kos/19050/hasDefaultDeprecationTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment """Number of days past review cycle due date to set resource as deprecated""";
+                                                            rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup>;
+                                                            rdfs:label "has Default Deprecation Time";
+                                                            rdfs:range xsd:integer.
 <https://pid.bayer.com/kos/19050#ConsumerGroup-hasConsumerGroupContactPerson>
   a sh:PropertyShape ;
   sh:path <https://pid.bayer.com/kos/19050/hasConsumerGroupContactPerson> ;
@@ -654,6 +690,7 @@ owl:Thing
   sh:property <https://pid.bayer.com/kos/19050/367403-editorialNote> ;
   sh:property <https://pid.bayer.com/kos/19050/367403-startTime> ;
   sh:property <https://pid.bayer.com/kos/19050/367403-type> ;
+  sh:property <https://pid.bayer.com/kos/19050/367403-ResourceTemplateGraph>;
 .
 <https://pid.bayer.com/kos/19050/367403->
   a sh:PropertyShape ;
@@ -715,6 +752,18 @@ owl:Thing
   sh:nodeKind sh:IRI ;
   sh:order 3 ;
 .
+<https://pid.bayer.com/kos/19050/367403-ResourceTemplateGraph> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                               <http://www.w3.org/ns/shacl#description> "Resource Template Graph";
+                                                               <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/StandardGroup>;
+                                                               <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                               <http://www.w3.org/ns/shacl#minCount> 1 ;
+                                                               <http://www.w3.org/ns/shacl#name> "Resource Template Graph";
+                                                               <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                                               <http://www.w3.org/ns/shacl#order> 15.0;
+                                                               <http://www.w3.org/ns/shacl#path> <https://pid.bayer.com/kos/19050/852166>.
+<https://pid.bayer.com/kos/19050/852166> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain <https://pid.bayer.com/kos/19050/367403>;
+                                         rdfs:label "has Resource Template Graph".
 <https://pid.bayer.com/kos/19050/367403--4>
   a sh:PropertyShape ;
   sh:path <https://pid.bayer.com/kos/19050/891201> ;
@@ -2261,3 +2310,70 @@ daaa__enterprise_core_ontology_1_0:
     teamwork:newInstancesUserCannotModifyURI  false ;
     rdfs:comment               "This is the Enterprise Core Ontology for the COLID application." 
 .
+
+<https://pid.bayer.com/kos/19050#ConsumerGroup-ResourceTemplates> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                                  <http://www.w3.org/ns/shacl#description> "Resource templates for a particular consumer group";
+                                                                  <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/StandardGroup>;
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1000 ;
+                                                                  <http://www.w3.org/ns/shacl#name> "Resource Templates";
+                                                                  <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                                                  <http://www.w3.org/ns/shacl#order> 54.0;
+                                                                  <http://www.w3.org/ns/shacl#path> <https://pid.bayer.com/kos/19050/hasResourceTemplates>.
+
+
+
+<https://pid.bayer.com/kos/19050/hasResourceTemplates> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:domain <https://pid.bayer.com/kos/19050#ConsumerGroup>;
+                                                       rdfs:label "has Resource Templates";
+                                                       rdfs:range <https://pid.bayer.com/kos/19050/ResourceTemplate>.
+
+
+<https://pid.bayer.com/kos/19050/ResourceTemplate> a <http://www.w3.org/2002/07/owl#Class>,
+                                                     <http://www.w3.org/ns/shacl#NodeShape>;
+                                                   rdfs:comment "Class to incorporate resource template IDs";
+                                                   rdfs:label "Resource Template";
+                                                   rdfs:subClassOf <https://pid.bayer.com/kos/19050/PID_Concepts>;
+                                                   <http://www.w3.org/ns/shacl#property> <https://pid.bayer.com/kos/19050/ResourceTemplate-PIDURI>,
+                                                                                         <https://pid.bayer.com/kos/19050/ResourceTemplate-ResourceType>,
+                                                                                         <https://pid.bayer.com/kos/19050/ResourceTemplate-EntityType>,
+                                                                                         <https://pid.bayer.com/kos/19050/ResourceTemplate-Name>.
+
+
+<https://pid.bayer.com/kos/19050/ResourceTemplate-EntityType> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                              <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/TechnicalInformation>;
+                                                              <http://www.w3.org/ns/shacl#minCount> 1 ;
+                                                              <http://www.w3.org/ns/shacl#name> "Entity Type";
+                                                              <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                                              <http://www.w3.org/ns/shacl#order> 40.0;
+                                                              <http://www.w3.org/ns/shacl#path> rdf:type.
+<https://pid.bayer.com/kos/19050/ResourceTemplate-Name> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                        <http://www.w3.org/ns/shacl#datatype> xsd:string;
+                                                        <http://www.w3.org/ns/shacl#description> "Name for Resource Template";
+                                                        <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/UsageAndMaintenance>;
+                                                        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                        <http://www.w3.org/ns/shacl#minCount> 1 ;
+                                                        <http://www.w3.org/ns/shacl#name> "Name";
+                                                        <http://www.w3.org/ns/shacl#order> 31.0;
+                                                        <http://www.w3.org/ns/shacl#path> rdfs:label.
+<https://pid.bayer.com/kos/19050/ResourceTemplate-PIDURI> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                          <http://www.w3.org/ns/shacl#description> "The draft resource PID URI which will be used as a default template for a resource";
+                                                          <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/PIDURI>;
+                                                          <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                          <http://www.w3.org/ns/shacl#minCount> 1 ;
+                                                          <http://www.w3.org/ns/shacl#name> "PID URI";
+                                                          <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                                          <http://www.w3.org/ns/shacl#order> 20.0;
+                                                          <http://www.w3.org/ns/shacl#path> <http://pid.bayer.com/kos/19014/hasPID>.
+<https://pid.bayer.com/kos/19050/ResourceTemplate-ResourceType> a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                                <http://www.w3.org/ns/shacl#class> <https://pid.bayer.com/kos/19050/PID_Concept>;
+                                                                <http://www.w3.org/ns/shacl#description> "for which resource we want to create a template";
+                                                                <http://www.w3.org/ns/shacl#group> <https://pid.bayer.com/kos/19050/UsageAndMaintenance>;
+                                                                <http://www.w3.org/ns/shacl#maxCount> 1 ;
+                                                                <http://www.w3.org/ns/shacl#minCount> 1 ;
+                                                                <http://www.w3.org/ns/shacl#name> "Resource Type";
+                                                                <http://www.w3.org/ns/shacl#order> 30.0;
+                                                                <http://www.w3.org/ns/shacl#path> <https://pid.bayer.com/kos/19050/hasResourceType>.            
+<https://pid.bayer.com/kos/19050/hasResourceType> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:domain <https://pid.bayer.com/kos/19050/ResourceTemplate>;
+                                                  rdfs:label "has Resource Type";
+                                                  rdfs:range <https://pid.bayer.com/kos/19050/PID_Concept>.
