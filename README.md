@@ -10,7 +10,7 @@ This repository helps settings up a local environment based on Docker Compose.
 
 ## Installation instructions
 
-1. Install Docker Desktop for Windows from [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) (latest test with Docker Desktop v2.2.0.3)
+1. Install Docker Desktop for Windows from [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) (latest test with Docker Desktop 4.21.1)
 2. Clone this repository locally
     ```console
     git clone --recursive [URL to this Git repo]
@@ -37,9 +37,7 @@ This repository helps settings up a local environment based on Docker Compose.
     ```
 5. Run `docker-compose up` to download and build all Docker images and startup the environment
 6. Wait for docker-compose to start up
-7. Open the COLID editor (see URL below). Go to the profile menu in the upper right corner and click on "Administration". Open the Metadata Graph Configuration sub-menu page and click the "Start reindex" button in the upper right corner.
-
-8. If you just want to use the Knowledge Graph Explorer Application, then only fuseki, KGE-Frontend and KGE-Web-service docker images needs to be installed. 
+7. Open the COLID Data Marketplace frontend (see URL below). Go to the profile menu in the upper right corner and click on "Administration". Open the Metadata Graph Configuration sub-menu page and click the "Start reindex" button in the upper right corner.
 
 
 ### Known problems
@@ -66,11 +64,13 @@ This repository helps settings up a local environment based on Docker Compose.
 | COLID Reporting Service API Swagger documentation        | http://localhost:51910/swagger  | http://localhost:51911/swagger  | -        | -        |
 | Apache Jena Fuseki Database Webinterface                 | http://localhost:3030/          | -                               | admin    | admin    |
 | RabbitMQ Webinterface                                    | http://localhost:15672/         | -                               | guest    | guest    |
-| KGE-Editor-Frontend                         | http://localhost:4400/ | http://localhost:4400/| -        | -        |
-| KGE-Web-Service                         | http://localhost:8080/ | http://localhost:8080/| -        | -        |
-| Resource Relationship Manager-Service         | http://localhost:51830/ | http://localhost:51831/| -        | -        |
-| Resource Relationship Manager-Frontend                          | http://localhost:7000/ | http://localhost:7000/| -        | -        |
-| COLID API Carrot2 Service                        | http://localhost:4305/ | http://localhost:4305/| -        | -        |
+| KGE-Editor-Frontend                                      | http://localhost:4400/          | http://localhost:4400/          | -        | -        |
+| KGE-Web-Service                                          | http://localhost:8080/          | http://localhost:8080/          | -        | -        |
+| Resource Relationship Manager-Service                    | http://localhost:51830/         | http://localhost:51831/         | -        | -        |
+| Resource Relationship Manager-Frontend                   | http://localhost:7000/          | http://localhost:7000/          | -        | -        |
+| COLID API Carrot2 Service                                | http://localhost:4305/          | http://localhost:4305/          | -        | -        |
+| Opensearch Dashboard                                     | http://localhost:5601/          | -                               | admin    | admin    |
+| Minio Browser                                            | http://localhost:9001/          | -                               | minio    | minio123 |
 ## Quick Tips
 
 Some quick tips and advices to work faster.
